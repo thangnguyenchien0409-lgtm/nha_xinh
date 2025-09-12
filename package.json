@@ -10,10 +10,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
+    "@reduxjs/toolkit": "^2.9.0",
+    "@stripe/stripe-js": "^7.9.0",
     "@tailwindcss/vite": "^4.1.13",
+    "antd": "^5.27.3",
+    "axios": "^1.12.0",
+    "firebase": "^12.2.1",
+    "framer-motion": "^12.23.12",
+    "js-cookie": "^3.0.5",
+    "lodash.debounce": "^4.0.8",
+    "normalize.css": "^8.0.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.13"
+    "react-hook-form": "^7.62.0",
+    "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.8.2",
+    "react-slick": "^0.31.0",
+    "react-spinners": "^0.17.0",
+    "react-toastify": "^11.0.5",
+    "slick-carousel": "^1.8.1",
+    "tailwindcss": "^4.1.13",
+    "yup": "^1.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
