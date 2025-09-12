@@ -1,4 +1,5 @@
 import LeftHeader from '@/components/Header/components/LeftHeader';
+import RightHeader from '@/components/Header/components/RightHeader';
 import { useEffect, useState } from 'react';
 
 function Header() {
@@ -21,7 +22,7 @@ function Header() {
         >
             <div className='mx-auto flex h-full items-center justify-between bg-white px-2 transition-all duration-500 ease-in-out sm:mx-auto lg:max-w-7xl'>
                 <LeftHeader />
-                {/* <RightHeader /> */}
+                <RightHeader />
             </div>
             <div className='py-2 md:hidden'>{/* <InputSearch /> */}</div>
         </div>
