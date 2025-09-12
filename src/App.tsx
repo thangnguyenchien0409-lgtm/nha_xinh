@@ -3,17 +3,20 @@ import './App.css';
 import { Suspense } from 'react';
 import UserPage from '@/pages/UserPage/UserPage';
 import AdminPage from '@/pages/AdminPage/AdminPage';
+import { ActiveProvider } from '@/context/ActiveContext';
 
 function App() {
     return (
         <>
             <Router>
-                <Suspense fallback={'loading'}>
-                    <Routes>
-                        <Route path='/*' element={<UserPage />} />
-                        <Route path='/admin/*' element={<AdminPage />} />
-                    </Routes>
-                </Suspense>
+                <ActiveProvider>
+                    <Suspense fallback={'loading'}>
+                        <Routes>
+                            <Route path='/*' element={<UserPage />} />
+                            <Route path='/admin/*' element={<AdminPage />} />
+                        </Routes>
+                    </Suspense>
+                </ActiveProvider>
             </Router>
         </>
     );
