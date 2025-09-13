@@ -2,6 +2,8 @@ export type InitialStateType = {
     status: 'idle' | 'loading' | 'success' | 'error';
     product: any[];
     totalPage: number;
+    newProduct: any[];
+    viewedProduct: any[];
 };
 
 export type ApiResponse = {
