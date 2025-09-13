@@ -1,6 +1,6 @@
 import { IoCloseSharp } from 'react-icons/io5';
 import { memo, useContext, useMemo, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,46 +8,44 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Input from '@/components/Input/Input';
 import { ModalContext } from '@/context/ModalContext';
 
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchLogin, fetchLoginWithGoogle, fetchRegister } from '@/redux/authSlice';
+import { fetchLogin, fetchLoginWithGoogle, fetchRegister } from '@/redux/authSlice';
 // import { DotLoader } from 'react-spinners';
+import type { AuthBody } from '@/apis/authService';
+import { useAppDispatch } from '@/hooks/reduxHook';
 
 function Login() {
     const [isLogin, setIsLogin] = useState(true);
 
-    const { handleToggleAuthForm, isOpenAuth } = useContext(ModalContext)!;
-    console.log(isOpenAuth);
+    const { handleToggleAuthForm } = useContext(ModalContext)!;
 
-    // const { status } = useSelector((state) => state.auth);
-    // const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const validateForm = useMemo(() => {
-        return yup.object().shape({
-            email: yup.string().email('Email không hợp lệ').required('Vui lòng nhập email'),
-            password: yup
-                .string()
-                .min(8, 'Mật khẩu ít nhất 8 kí tự')
-                .matches(/[A-Z]/, 'Mật khẩu phải có ít nhất một chữ cái in hoa')
-                .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Mật khẩu phải có ít nhất một ký tự đặc biệt')
-                .required('Vui lòng nhập mật khẩu'),
-            ...(isLogin
-                ? {}
-                : {
-                      name: yup.string().required('Vui lòng nhập tên đăng kí'),
-                      confirmPassword: yup
-                          .string()
-                          .oneOf([yup.ref('password')], 'Mật khẩu xác nhận không khớp')
-                          .required('Vui lòng xác nhận mật khẩu')
-                  })
-        });
-    }, [isLogin]);
+    const loginSchema = yup.object({
+        email: yup.string().email('Email không hợp lệ').required('Vui lòng nhập email'),
+        password: yup
+            .string()
+            .min(8, 'Mật khẩu ít nhất 8 kí tự')
+            .matches(/[A-Z]/, 'Phải có ít nhất một chữ cái in hoa')
+            .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Phải có ít nhất một ký tự đặc biệt')
+            .required('Vui lòng nhập mật khẩu')
+    });
+
+    const registerSchema = loginSchema.shape({
+        name: yup.string().required('Vui lòng nhập tên đăng kí'),
+        confirmPassword: yup
+            .string()
+            .oneOf([yup.ref('password')], 'Mật khẩu xác nhận không khớp')
+            .required('Vui lòng xác nhận mật khẩu')
+    });
+
+    const validateForm = useMemo(() => (isLogin ? loginSchema : registerSchema), [isLogin]);
 
     const {
         register,
-        // handleSubmit,
+        handleSubmit,
         formState: { errors },
         reset
-    } = useForm({
+    } = useForm<AuthBody>({
         resolver: yupResolver(validateForm),
         mode: 'onTouched'
     });
@@ -57,21 +55,25 @@ function Login() {
         setTimeout(() => reset({}, { keepErrors: false, keepValues: false }), 0);
     };
 
-    // const handleLoginGoogle = () => {
-    //     dispatch(fetchLoginWithGoogle());
-    //     handleToggleAuthForm();
-    // };
+    const handleLoginGoogle = () => {
+        dispatch(fetchLoginWithGoogle());
+        handleToggleAuthForm();
+    };
 
-    // const onSubmit = (data) => {
-    //     if (isLogin) {
-    //         dispatch(fetchLogin(data));
-    //         handleToggleAuthForm();
-    //     } else {
-    //         dispatch(fetchRegister(data));
-    //         setIsLogin(true);
-    //         setTimeout(() => reset({}, { keepErrors: false, keepValues: false }), 0);
-    //     }
-    // };
+    const onSubmit: SubmitHandler<AuthBody> = async (data) => {
+        try {
+            if (isLogin) {
+                await dispatch(fetchLogin(data)).unwrap();
+                handleToggleAuthForm();
+            } else {
+                await dispatch(fetchRegister(data)).unwrap();
+                setIsLogin(true);
+                reset();
+            }
+        } catch (err) {
+            console.error('Auth error:', err);
+        }
+    };
 
     return (
         <div className='h-full font-sans'>
@@ -96,7 +98,7 @@ function Login() {
                         <AnimatePresence mode='wait'>
                             <motion.form
                                 key={isLogin ? 'login' : 'register'}
-                                // onSubmit={handleSubmit(onSubmit)}
+                                onSubmit={handleSubmit(onSubmit)}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -30 }}
@@ -181,7 +183,7 @@ function Login() {
                                     </button>
                                     <button
                                         type='button'
-                                        // onClick={() => handleLoginGoogle()}
+                                        onClick={() => handleLoginGoogle()}
                                         className='w-[100px] rounded-xl bg-red-500 px-4 py-2 text-white shadow-xl transition hover:scale-105'
                                     >
                                         Google

@@ -6,7 +6,8 @@ import { useContext } from 'react';
 // import { ModalContext } from '@/context/ModalContext';
 import { useNavigate } from 'react-router-dom';
 import { ActiveContext } from '@/context/ActiveContext';
-import { dataNav } from '@/components/Header/mockData';
+import { dataNav, dataSubNav } from '@/components/Header/data';
+import SubNav from '@/components/Header/components/SubNav';
 
 type Item = {
     type: string;
@@ -56,7 +57,7 @@ function LeftHeader() {
                             />
                         )}
 
-                        {/* {item.type === 'rooms' && <SubNav data={dataSubNav} />} */}
+                        {item.type === 'rooms' && <SubNav data={dataSubNav} />}
                     </li>
                 ))}
             </ul>

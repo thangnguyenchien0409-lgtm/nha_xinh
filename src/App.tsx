@@ -6,10 +6,11 @@ import AdminPage from '@/pages/AdminPage/AdminPage';
 import { ActiveProvider } from '@/context/ActiveContext';
 import { ModalProvider } from '@/context/ModalContext';
 import Auth from '@/components/Auth/Auth';
+import { ToastProvider } from '@/context/ToastContext';
 
 function App() {
     return (
-        <>
+        <ToastProvider>
             <ModalProvider>
                 <Router>
                     <ActiveProvider>
@@ -23,7 +24,7 @@ function App() {
                     </ActiveProvider>
                 </Router>
             </ModalProvider>
-        </>
+        </ToastProvider>
     );
 }
 

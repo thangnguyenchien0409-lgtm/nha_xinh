@@ -15,14 +15,9 @@ export interface IconItem {
     size: number;
 }
 
-export interface SubNavItem {
+export interface SubNavType {
     path: string;
-    name: string;
-}
-
-export interface SubUserItem {
-    path: string;
-    type: string;
+    type?: string;
     name: string;
 }
 
@@ -72,26 +67,30 @@ export const dataIcon: IconItem[] = [
     }
 ];
 
-export const dataSubNav: SubNavItem[] = [
+export const dataSubNav: SubNavType[] = [
     {
         path: '/',
-        name: 'Phòng khách'
+        name: 'Phòng khách',
+        type: ''
     },
     {
         path: '/',
-        name: 'Phòng ăn'
+        name: 'Phòng ăn',
+        type: ''
     },
     {
         path: '/',
-        name: 'Phòng ngủ'
+        name: 'Phòng ngủ',
+        type: ''
     },
     {
         path: '/',
-        name: 'Phòng làm việc'
+        name: 'Phòng làm việc',
+        type: ''
     }
 ];
 
-export const dataSubUser: SubUserItem[] = [
+export const dataSubUser: SubNavType[] = [
     {
         path: '/',
         type: 'info',
