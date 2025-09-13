@@ -1,16 +1,9 @@
 import BannerHomePage from '@/components/Banner/BannerHomePage/BannerHomePage';
+import InspireHomePage from '@/components/Inspire/InspireHomePage';
 import ProductHomePage from '@/components/Product/ProductHomePage';
-import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
-import { fetchGetAllProduct } from '@/redux/productSlice/productSlice';
 import AboutImg from '@assets/img/noi-that.jpg';
-import { useEffect } from 'react';
 
 function HomePage() {
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(fetchGetAllProduct());
-    }, []);
     return (
         <div className='w-full'>
             <BannerHomePage />
@@ -38,6 +31,7 @@ function HomePage() {
                 </div>
             </div>
             <ProductHomePage />
+            <InspireHomePage />
         </div>
     );
 }

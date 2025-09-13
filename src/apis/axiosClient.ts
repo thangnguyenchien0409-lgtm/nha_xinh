@@ -9,8 +9,8 @@ const axiosClient = axios.create({
     }
 });
 
-export const axiosLocal = axios.create({
-    baseURL: 'http://localhost:5000/',
+export const axiosMockClient = axios.create({
+    baseURL: 'http://localhost:3001/',
     headers: {
         'Content-Type': 'application/json'
     }
