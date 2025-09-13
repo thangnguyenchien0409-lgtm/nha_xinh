@@ -1,15 +1,19 @@
 import { FaUser } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
-import { dataIcon } from '@/components/Header/mockData';
+import { dataIcon, dataSubUser, type SubNavType } from '@/components/Header/data';
 import { useContext } from 'react';
 import { ModalContext } from '@/context/ModalContext';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
+import SubNav from '@/components/Header/components/SubNav';
+import { logOut } from '@/redux/authSlice';
 
 type Icon = {
     name: IconType;
     size: number;
     type: string;
+    path?: string;
 };
 
 function RightHeader() {
@@ -17,16 +21,20 @@ function RightHeader() {
         useContext(ModalContext)!;
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const isAuth = useAppSelector((state) => state.auth.isAuth);
+    const user = useAppSelector((state) => state.auth.user);
 
-    const handleClickItem = (type: string, path: string | null) => {
-        setTypeActionProduct(type);
-        if (type === 'logout') {
-            // dispatch(logOut());
-        } else if (type === 'cart' || type === 'wishlist') {
+    const handleClickItem = (item: SubNavType | Icon) => {
+        setTypeActionProduct(item.type!);
+
+        if (item.type === 'logout') {
+            dispatch(logOut());
+        } else if (item.type === 'cart' || item.type === 'wishlist') {
             handleToggleModalProduct();
         }
-        if (path) {
-            navigate(path);
+        if (item.path) {
+            navigate(item.path);
         }
     };
 
@@ -38,7 +46,7 @@ function RightHeader() {
             {dataIcon.map((icon: Icon) => (
                 <div key={icon.type} className='hover:text-text-hover relative transition-all'>
                     <icon.name
-                        onClick={() => handleClickItem(icon.type, null)}
+                        onClick={() => handleClickItem(icon)}
                         size={icon.size}
                         className={`cursor-pointer ${
                             icon.type === 'cart' ? 'block sm:block' : 'hidden sm:block'
@@ -53,10 +61,14 @@ function RightHeader() {
             ))}
 
             <div
-                onClick={handleToggleAuthForm}
+                onClick={() => {
+                    if (!isAuth) {
+                        handleToggleAuthForm();
+                    }
+                }}
                 className='group hover:text-text-hover relative flex cursor-pointer items-center justify-center gap-1 transition-all'
             >
-                {/* <p>
+                <p>
                     {isAuth
                         ? user?.name || (
                               <img
@@ -66,18 +78,18 @@ function RightHeader() {
                               />
                           )
                         : 'Đăng nhập'}
-                </p> */}
+                </p>
                 <FaUser />
-                {/* {isAuth && (
+                {isAuth && (
                     <SubNav
                         data={dataSubUser}
                         position='right'
                         setTop='140%'
                         setWidth='200px'
-                        onClick={(item) => handleClickItem(item.type, item.path)}
+                        onClick={(item) => handleClickItem(item)}
                         isAdmin={true}
                     />
-                )} */}
+                )}
             </div>
         </div>
     );

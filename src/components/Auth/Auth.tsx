@@ -6,7 +6,6 @@ import { ModalContext } from '@/context/ModalContext';
 
 function Auth() {
     const { isOpenAuth, handleToggleAuthForm } = useContext(ModalContext)!;
-    console.log(isOpenAuth);
     return (
         <AnimatePresence>
             {isOpenAuth && (
