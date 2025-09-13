@@ -1,0 +1,276 @@
+{
+    "inspire": [
+        {
+            "id": "1",
+            "title": "“Mây” – Tựa Như Gió Thoảng Qua Miền Quê",
+            "description": "Nhẹ nhàng, thư thái, và gần gũi với thiên nhiên – đó là cảm giác mà bạn sẽ cảm nhận được ngay khi chạm mắt đến Bộ sưu tập Mây – một sáng tạo mới nhất từ Nhà Xinh, lấy cảm hứng từ vẻ đẹp mộc mạc, bình dị của hồn quê Việt Nam.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2025/06/SOFA-MAY.webp",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Nơi Vật Liệu Lên Tiếng Bằng Đường Cong",
+                    "description": "Những sợi mây được đan tay tỉ mỉ, tạo nên các đường cong mềm mại, uyển chuyển, vừa tạo cảm giác thoải mái khi sử dụng, vừa giữ vững yếu tố thẩm mỹ cao cấp. Các nghệ nhân đã khéo léo đan tay từng sợi mây, tạo nên cấu trúc nhẹ nhàng, mềm mại nhưng không kém phần vững chắc. Phần viền khung gỗ beech được xử lý mượt mà, định hình cá tính cho không gian sống hiện đại.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/06/DETAL-MAY.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Về Lại Chốn Bình Yên Giữa Đô Thị",
+                    "description": "Mỗi chiếc ghế ăn, armchair hay bàn ăn không chỉ đóng vai trò chức năng, mà còn khơi gợi hình ảnh hiên nhà xưa, nơi có tiếng võng đung đưa, làn gió nhẹ xuyên qua vòm lá. Với Mây, bạn không chỉ bày trí một căn phòng, mà đang thổi vào không gian sống của mình một tâm hồn Việt – êm dịu, hiền hòa và đầy chiều sâu.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/06/BAN-AN-MAY.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "title": "Mây – Nơi Tâm Hồn Tìm Về",
+                    "description": "Bộ sưu tập Mây là gợi ý hoàn hảo cho những ai yêu thích không gian sống tối giản, hiện đại mà vẫn có chiều sâu văn hóa. Không phô trương, không cầu kỳ, Mây tinh tế trong từng chất liệu, đường nét và cảm xúc mà nó mang lại.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/06/SOFAMAY.webp"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["1", "2"]
+        },
+        {
+            "id": "2",
+            "title": "Điểm tô sắc màu cho không gian sống",
+            "description": "Những màu sắc rực rỡ đang quay trở lại, báo hiệu mùa hè đến, hãy sẵn sàng chào đón những màu sắc đầy cảm xúc như đỏ rực, vàng tươi, cam san hô. Những sắc thái táo bạo này mang lại năng lượng, sự tự tin và ấm áp – hoàn hảo để làm sáng bừng không gian.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2025/05/acc-1391x800.webp",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Bừng sáng không gian sống bằng những chiếc bình đa sắc",
+                    "description": "Phong cách sống động với những chiếc bình đầy bắt mắt khi trưng bày cùng hoa tươi, đều mang đến nguồn năng lượng tươi mới, sống động cho không gian của bạn. Một chút màu sắc sẽ dễ dàng tạo nên sự khác biệt lớn!",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/05/binh.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Thích trang trí màu sắc đậm? Cứ thoải mái thể hiện cá tính!",
+                    "description": "Bạn là người yêu thích sự phá cách và muốn ngôi nhà mình thật sự nổi bật? Đừng ngần ngại chọn lựa những món hàng trang trí màu sắc rực rỡ! Từ những món đồ điêu khắc ấn tượng cho đến những vật dụng trang trí ngộ nghĩnh, tất cả đều có thể truyền tải cá tính và nét quyến rũ riêng vào từng ngóc ngách. Chúng sẽ cùng nhau tạo nên một không gian sống động, tràn đầy năng lượng, thể hiện rõ phong cách độc đáo của bạn. Hãy để ngôi nhà bạn thật sự bùng nổ với sắc màu!",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/05/hang-trang-tri-768x1021.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "title": "Ghế Armchair ấn tượng, tăng cường thư giãn, quên mọi âu lo",
+                    "description": "Muốn “thay áo” cho phòng khách? Một chiếc ghế sofa rực rỡ chính là câu trả lời! Dù là màu xanh ngọc lục bảo, cam cháy nổi bật hay vàng mù tạt rực rỡ, những gam màu tươi sáng này sẽ mang đến sự ấm áp, năng lượng giúp ngôi nhà bạn trở nên tươi mới và hấp dẫn hơn bao giờ hết. Bạn có thể kết hợp chúng với nhiều món đồ trang trí đa dạng, tự do sáng tạo.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/04/sac-mau-mua-ha-cho-phong-khach-tuoi-moi-1.jpg"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["1", "2", "3", "4"]
+        },
+        {
+            "id": "3",
+            "title": "CHIÊM NGƯỠNG CÁC DÒNG SẢN PHẨM CHO MÙA MỚI TẠI NHÀ XINH",
+            "description": "Bên cạnh việc tiếp tục làm mới không gian cửa hàng, mang đến trải nghiệm độc đáo cho khách hàng, Nhà Xinh sẽ giới thiệu những dòng sản phẩm mới với thiết kế hợp thời, kiểu dáng đa dạng cùng chất lượng cao. Hãy cùng khám phá các sản phẩm mới sẽ có mặt tại các cửa hàng Nhà Xinh.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2025/04/Ban-Nuoc-Valencia-Mat-Da-04.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Valencia – bộ sản phẩm cho phòng khách sang trọng, thanh lịch",
+                    "description": "Lấy cảm hứng từ thành phố Valencia, miền Đông Nam Tây Ban Nha, nơi nổi tiếng với sự giao thoa độc đáo giữa kiến trúc hiện đại và cổ kính. Thiết kế của Valencia tập trung vào việc gợi lên cảm giác ấm áp và linh hoạt, đáp ứng nhu cầu của cuộc sống hiện đại trong khi vẫn tôn vinh những di sản văn hóa lâu đời. ",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/04/sofa-Valencia-2-1536x1024.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Napoli – tạo nên vẻ đẹp ấm cúng cho không gian phòng ăn",
+                    "description": "Napoli ra đời từ sự hòa quyện độc đáo giữa vẻ đẹp tự nhiên của các hình khối organic, sự tỉ mỉ trong từng chi tiết hoàn thiện và nguồn cảm hứng mạnh mẽ từ kiến trúc hiện đại. Ý tưởng thiết kế của Napoli tập trung vào việc tạo ra một sự cân bằng thị giác ấn tượng thông qua các hình khối mang tính kiến trúc. ",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/04/ban-an-Valencia-1536x1019.webp"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "title": "Nest – ấm áp và hiện đại",
+                    "description": "Đúng như cái tên mang ý nghĩa “chiếc tổ”, Nest mang vẻ ngoài ấm cúng, mềm mại và thư thái. Thiết kế của dòng sản phẩm Nest mang đến một diện mạo trẻ trung, hợp thời và tươi sáng cho không gian.Lấy cảm hứng từ hình ảnh ấm áp và mềm mại của một chiếc tổ chim, Nest mang đến một thiết kế sofa tràn đầy sự thoải mái và gần gũi. Đường cong uyển chuyển ở phần tựa lưng và đường may nhấn tinh tế trên tay vịn không chỉ tạo điểm nhấn thẩm mỹ mà còn gợi lên cảm giác được bao bọc, an yên.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/04/goc-cam-hung-4-1536x1024.webp"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["1", "2"]
+        },
+        {
+            "id": "4",
+            "title": "Tại SAO NÊN CHỌN GHẾ NGỒI LÀM VIỆC PHÙ HỢP",
+            "description": "Một chiếc ghế làm việc không chỉ là nơi để ngồi, mà nó còn đóng vai trò quan trọng trong việc bảo vệ sức khỏe và nâng cao hiệu suất làm việc hàng ngày. Trong cuộc sống hiện đại, khi thời gian ngồi làm việc kéo dài liên tục, việc lựa chọn một chiếc ghế phù hợp có thể tạo ra sự khác biệt đáng kể cho cả sức khỏe lẫn hiệu quả công việc của bạn. Dưới đây là những lý do cụ thể giải thích tại sao việc đầu tư vào một chiếc ghế làm việc tốt là vô cùng cần thiết.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/09/ghe-ngoi-lam-viec-phu-hop-9.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Hỗ trợ lưng và cổ – Bảo vệ cột sống và tư thế ngồi",
+                    "description": "Trong suốt quá trình làm việc, cột sống và cổ là những bộ phận chịu áp lực nhiều nhất khi phải giữ cơ thể ở tư thế ngồi trong thời gian dài. Chiếc ghế làm việc được thiết kế đặc biệt để hỗ trợ vùng lưng và cổ, giúp giảm tải cho cột sống. Điều này không chỉ giảm nguy cơ gặp các vấn đề về đau lưng và đau cổ mà còn cải thiện tư thế ngồi đúng chuẩn. Việc ngồi sai tư thế kéo dài có thể gây ra những hệ lụy như thoái hóa cột sống hoặc căng cơ cổ, và một chiếc ghế tốt sẽ giúp bạn duy trì tư thế thoải mái, giảm căng thẳng lên các khớp và cơ.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/09/ghe-ngoi-lam-viec-phu-hop-1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Tăng cường sự thoải mái – Giảm thiểu áp lực lên cơ thể",
+                    "description": "Một chiếc ghế làm việc chất lượng cao sẽ có đệm ngồi êm ái, giúp phân bổ trọng lượng cơ thể đồng đều và giảm áp lực lên hông, đùi. Điều này không chỉ mang lại cảm giác thoải mái trong suốt quá trình ngồi mà còn giúp giảm tình trạng mỏi cơ, đau nhức khi phải làm việc lâu. Sự thoải mái này tạo cho bạn duy trì sự tập trung tối đa, từ đó nâng cao năng suất làm việc một cách đáng kể. Khi cơ thể được nghỉ ngơi và thoải mái, tinh thần làm việc cũng sẽ tốt hơn, giúp bạn đạt được kết quả công việc như mong đợi.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/09/ghe-ngoi-lam-viec-phu-hop-6.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "title": "Tăng tính di động – Tiện lợi và hiệu quả hơn",
+                    "description": "Với thiết kế bánh xe linh hoạt, nhiều mẫu ghế làm việc hiện đại cho phép bạn dễ dàng di chuyển giữa các vị trí khác nhau mà không cần phải rời khỏi ghế. Điều này rất hữu ích khi bạn cần tiếp cận các tài liệu hoặc thiết bị xung quanh bàn làm việc mà không làm gián đoạn công việc. Khả năng di chuyển mượt mà giúp tiết kiệm thời gian và công sức, mang lại sự tiện lợi tối đa trong môi trường làm việc hiện đại.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/09/ghe-ngoi-lam-viec-phu-hop.jpg"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["3", "4"]
+        },
+        {
+            "id": "5",
+            "title": "Giường ngủ cho phòng ngủ hiện đại với tầm giá dưới 15 triệu",
+            "description": "Giường Iris là sự kết hợp hoàn hảo giữa thiết kế sang trọng và tiện ích hiện đại, giúp không gian phòng ngủ thêm phần sang trọng. Tông màu xám trang nhã không chỉ tôn lên vẻ đẹp thanh lịch mà còn dễ dàng hòa hợp với mọi phong cách trang trí. Được thiết kế 4 hộc kéo xung quanh giúp tối ưu hóa diện tích và cung cấp không gian lưu trữ rộng rãi cho đồ đạc. Với sự tiện dụng và thiết kế thông minh này, phòng ngủ của bạn sẽ luôn gọn gàng và thoáng đãng, tạo cảm giác thoải mái.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/06/phong-ngu-giuong-hoc-keo-iris-5.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Giường Hộc Kéo Penny tinh tế",
+                    "description": "Với tông màu xám trang nhã của lớp vải bọc, giường ngủ Penny mang đến vẻ sang trọng, tinh tế cho không gian phòng ngủ hiện đại. Khung giường làm từ gỗ chắc chắn, đảm bảo độ bền bỉ và ổn định, trong khi lớp vải bọc êm ái tạo cảm giác thư thái cho người dùng. Đặc biệt, giường được thiết kế với hộc kéo xung quanh, giúp tiết kiệm diện tích và tối ưu hóa không gian lưu trữ. Nhờ vào thiết kế thông minh này, phòng ngủ của bạn sẽ trở nên thông thoáng và gọn gàng hơn, tạo nên một không gian sống lý tưởng.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/06/giuong-penny5.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Giường Dubai trang nhã",
+                    "description": "Giường Dubai với tông màu trang nhã là lựa chọn lý tưởng để nâng tầm không gian phòng ngủ của bạn, mang đến vẻ đẹp sang trọng và hiện đại. Chân giường làm từ gỗ beech chắc chắn, kết hợp cùng lớp vải bọc êm ái, mang lại trải nghiệm thư thái nhất cho người dùng. Giường Dubai hướng tới không gian thoáng đãng với kết cấu tối giản, tạo cảm giác nhẹ nhàng và thoải mái, biến phòng ngủ của bạn thành nơi lý tưởng để thư giãn và nghỉ ngơi.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/06/phong-ngu-dubai-tinh-te-sac-mau-tuoi-tan.jpg"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["3"]
+        },
+        {
+            "id": "6",
+            "title": "TẬN HƯỞNG BỮA TỐI CÙNG BÀN ĂN GỖ SỒI JAZZ",
+            "description": "Trong không gian hiện đại cùng bữa tối ấm cúng, bàn ăn gỗ sồi với thiết kế tinh tế như một nét chấm phá làm phòng ăn trở nên thật ấn tượng. Cùng Nhà Xinh khám phá nhiều hơn về bàn ăn gỗ sồi nhé!",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/05/ban-an-go-soi-jazz-1.png",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Nét sang trọng, ấm cúng từ bàn ăn gỗ sồi",
+                    "description": "Được gia công tỉ mỉ từ những thanh gỗ sồi già tự nhiên, bàn ăn gỗ sồi Jazz là sự lựa chọn hoàn hảo đồng hành cùng gia đình bạn trong mỗi bữa ăn. Bàn ăn Jazz được thiết kế rộng rãi, với các đường nét sắc sảo, góc cạnh và sự tinh tế trong từng chi tiết, đi kèm là một băng ghế dài tạo chỗ ngồi thoải mái. Bề mặt gỗ sồi tự nhiên được xử lý khéo léo, kết hợp chân sắt sơn tĩnh điện đầy mạnh mẽ sẽ góp phần tạo nên không gian ấm cúng nhưng không kém sang trọng.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/ghe-an-go-soi.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Ghế ăn Franky – sự kết hợp hoàn hảo",
+                    "description": "Mang vẻ đẹp hiện đại, sang trọng nhờ sở hữu kiểu dáng thanh mảnh, ghế ăn Franky và bàn ăn gỗ sồi Jazz được xem là bộ đôi hoàn hảo nâng tầm không gian phòng bếp. Màu gỗ và chất gỗ sồi tự nhiên của Jazz rất thích hợp để phối cùng các sản phẩm bọc da như ghế ăn Franky để tăng thêm vẻ sang trọng, ấm cúng và không kém hiện đại.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/ghe-an-franky.jpeg"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "title": "Lấp đầy không gian với kệ, tủ và đồ trang trí",
+                    "description": "Gian bếp sẽ trở nên gọn gàng và tinh tế hơn nếu được trang bị thêm những chiếc kệ thanh thoát hay hệ thống tủ bếp hoàn chỉnh. Không chỉ giúp thu gọn đồ đạc, tiết kiệm diện tích, những chiếc kệ, tủ bếp phù hợp với phong cách còn mang lại cái nhìn thẩm mỹ, nâng tầm không gian phòng bếp. Điểm nhấn cuối cùng là bình hoa Mily thủy tinh được bày trí tinh tế trên bàn ăn, đem đến cảm giác thư thái, nhẹ nhàng trong từng bữa ăn.  ",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2023/10/phong-an-maxine-khong-gian-6.jpg"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["2"]
+        },
+        {
+            "id": "7",
+            "title": "Thư giãn mỗi ngày với ghế thư giãn Lazboy",
+            "description": "Xoa dịu những mỏi mệt, vỗ về giúp ngủ ngon, đó là những gì chiếc ghế thư giãn Lazboy mang đến cho bạn mỗi ngày, giúp giảm nhẹ những lo toan của cuộc sống hàng ngày. ",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/04/ghe-thu-gian-lazboy-15.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Ghế thư giãn cải thiện sức khỏe tinh thần",
+                    "description": "Thư giãn cùng chiếc ghế Lazboy, một thiết kế đẳng cấp không chỉ mang lại sự thoải mái tối đa mà còn là điểm nhấn sang trọng cho không gian sống của bạn. Với một sự kết hợp tinh tế giữa chất liệu cao cấp và công nghệ hiện đại, chiếc ghế thư giãn này không chỉ là nơi lý tưởng để xua tan mệt mỏi và căng thẳng, cải thiện sức khỏe tinh thần mỗi ngày, mà còn là món nội thất giúp không gian của bạn thêm hiện đại và sang trọng hơn.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/04/ghe-thu-gian-lazboy-7.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Lazboy – Thiết kế sang trọng",
+                    "description": "Bắt đầu từ bên ngoài, ghế thư giãn Lazboy thu hút ánh nhìn với đường nét thanh thoát và tỉ mỉ, kết hợp với lớp bọc da bò cao cấp mềm mại, tạo nên cảm giác êm ái và dễ chịu ngay từ cái nhìn đầu tiên. Được thiết kế với phần khung gỗ chắc chắn, ghế Lazboy đảm bảo độ bền bỉ và độ ổn định cao, đồng thời mang lại sự hỗ trợ vững chắc cho cơ thể trong suốt quá trình sử dụng.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/04/ghe-thu-gian-lazboy-6.jpg"
+                        }
+                    ]
+                }
+            ],
+            "roomId": ["1", "3", "4"]
+        }
+    ]
+}
