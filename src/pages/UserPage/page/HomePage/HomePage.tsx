@@ -1,4 +1,7 @@
+import AboutHomePage from '@/components/About/AboutHomePage';
 import BannerHomePage from '@/components/Banner/BannerHomePage/BannerHomePage';
+import BannerLocation from '@/components/Banner/BannerLocation/BannerLocation';
+import Footer from '@/components/Footer/Footer';
 import InspireHomePage from '@/components/Inspire/InspireHomePage';
 import ProductHomePage from '@/components/Product/ProductHomePage';
 import AboutImg from '@assets/img/noi-that.jpg';
@@ -32,6 +35,9 @@ function HomePage() {
             </div>
             <ProductHomePage />
             <InspireHomePage />
+            <AboutHomePage />
+            <BannerLocation />
+            <Footer />
         </div>
     );
 }
