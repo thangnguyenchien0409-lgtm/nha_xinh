@@ -2,10 +2,21 @@ import { getAllProductsApi } from '@/apis/productService';
 import type { ApiResponse, FetchParam, InitialStateType } from '@/redux/productSlice/product.type';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const initialViewed: any[] = (() => {
+    try {
+        const data = localStorage.getItem('viewedProduct');
+        return data ? JSON.parse(data) : [];
+    } catch {
+        return [];
+    }
+})();
+
 const initialState: InitialStateType = {
     status: 'idle',
     product: [],
-    totalPage: 1
+    totalPage: 1,
+    newProduct: [],
+    viewedProduct: initialViewed
 };
 
 export const fetchGetAllProduct = createAsyncThunk<
@@ -25,7 +36,24 @@ export const fetchGetAllProduct = createAsyncThunk<
 const productSlice = createSlice({
     name: 'product',
     initialState,
-    reducers: {},
+    reducers: {
+        getNewProduct(state) {
+            state.newProduct = state.product?.slice(-8);
+        },
+        addViewedProduct(state, action) {
+            if (!Array.isArray(state.viewedProduct)) {
+                state.viewedProduct = [];
+            }
+
+            state.viewedProduct = state.viewedProduct.filter((p) => p._id !== action.payload._id);
+
+            state.viewedProduct.unshift(action.payload);
+
+            state.viewedProduct = state.viewedProduct.slice(0, 4);
+
+            localStorage.setItem('viewedProduct', JSON.stringify(state.viewedProduct));
+        }
+    },
     extraReducers: (builder) => {
         // --- GET ALL ---
         builder.addCase(fetchGetAllProduct.pending, (state) => {
@@ -41,5 +69,7 @@ const productSlice = createSlice({
         });
     }
 });
+
+export const { getNewProduct, addViewedProduct } = productSlice.actions;
 
 export default productSlice;

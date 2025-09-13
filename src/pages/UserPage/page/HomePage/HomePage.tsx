@@ -1,4 +1,5 @@
 import BannerHomePage from '@/components/Banner/BannerHomePage/BannerHomePage';
+import ProductHomePage from '@/components/Product/ProductHomePage';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import { fetchGetAllProduct } from '@/redux/productSlice/productSlice';
 import AboutImg from '@assets/img/noi-that.jpg';
@@ -36,6 +37,7 @@ function HomePage() {
                     />
                 </div>
             </div>
+            <ProductHomePage />
         </div>
     );
 }
