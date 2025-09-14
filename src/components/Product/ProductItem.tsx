@@ -2,6 +2,7 @@ import { ActiveContext } from '@/context/ActiveContext';
 import { ModalContext } from '@/context/ModalContext';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import { useFormatNumber } from '@/hooks/useFormatNumber';
+import { fetchProductById } from '@/redux/productSlice/productSlice';
 import { useContext } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -31,13 +32,12 @@ function ProductItem({
     // const { handleToggleAuthForm, handleToggleModalProduct, setTypeActionProduct } =
     //     useContext(ModalContext)!;
 
-    // const { setIsActiveNav } = useContext(ActiveContext)!;
+    const { setIsActiveNav } = useContext(ActiveContext)!;
 
-    // const formatVN = (n) => Number(n).toLocaleString('vi-VN');
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
     // const isAuth = useAppSelector((state) => state.auth.isAuth);
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // const handleAddToCart = (id:ProductItemType) => {
     //     if (isAuth) {
@@ -55,11 +55,11 @@ function ProductItem({
     //     }
     // };
 
-    // const handleNavigateDetailProduct = (id:ProductItemType) => {
-    //     navigate(`/${slug}/${id}`);
-    //     dispatch(fetchProductById(id));
-    //     setIsActiveNav(null);
-    // };
+    const handleNavigateDetailProduct = (id: string) => {
+        navigate(`/${slug}/${id}`);
+        dispatch(fetchProductById(id));
+        setIsActiveNav(null);
+    };
 
     return (
         <div
@@ -67,7 +67,7 @@ function ProductItem({
             className='group w-full border border-solid border-[#ececec] p-4 transition-all hover:border-[#ececec] lg:w-[312px] lg:border-transparent'
         >
             <div
-                // onClick={() => handleNavigateDetailProduct(id)}
+                onClick={() => handleNavigateDetailProduct(id)}
                 className='relative aspect-square h-[150px] w-full cursor-pointer overflow-hidden sm:h-[175px]'
             >
                 <img

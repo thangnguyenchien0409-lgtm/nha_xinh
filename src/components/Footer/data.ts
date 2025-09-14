@@ -9,7 +9,7 @@ import Slider8 from '@assets/img/slide--footer--8.png';
 import Slider9 from '@assets/img/slide--footer-2-9.png';
 import Slider10 from '@assets/img/slide--footer-10.png';
 
-type DataFooterType = {
+export type DataFooterType = {
     name: string;
 };
 
