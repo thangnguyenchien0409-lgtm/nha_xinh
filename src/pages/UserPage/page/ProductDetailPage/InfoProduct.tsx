@@ -15,20 +15,21 @@ import {
     dataTransport
 } from '@/pages/UserPage/page/ProductDetailPage/data';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
+import { fetchAddtoCart } from '@/redux/cartSlice/cartSlice';
 
 function InfoProduct({ data }: { data: any }) {
     const [type, setType] = useState<string>('describe');
     const [quantityToCart, setQuantityTocart] = useState(1);
     const [errorQuantity, setErrorQuantity] = useState('');
 
+    const { handleToggleAuthForm, handleToggleModalProduct, setTypeActionProduct } =
+        useContext(ModalContext)!;
+
+    const isAuth = useAppSelector((state) => state.auth.isAuth);
+    const dispatch = useAppDispatch();
+
     const dataGuaranteeValid = dataGuarantee.filter((item) => item.textValid);
     const dataGuaranteeInValid = dataGuarantee.filter((item) => item.textInvalid);
-
-    // const { handleToggleAuthForm, handleToggleModalProduct, setTypeActionProduct } =
-    //     useContext(ModalContext)!;
-
-    // const isAuth = useAppSelector((state) => state.auth.isAuth);
-    // const dispatch = useAppDispatch();
 
     const handleClickTitle = (type: string) => {
         setType(type);
@@ -51,21 +52,21 @@ function InfoProduct({ data }: { data: any }) {
         setErrorQuantity('');
     };
 
-    // const handleAddToCart = () => {
-    //     if (isAuth) {
-    //         if (data.quantity > 0) {
-    //             dispatch(fetchAddtoCart({ productId: data._id, quantity: quantityToCart }));
-    //             toast.success(`Đã thêm sản phẩm ${data.title} vào giỏ hàng`);
-    //             setTypeActionProduct('cart');
-    //             handleToggleModalProduct();
-    //         } else {
-    //             toast.warning('Sản phẩm hiện đã hết hàng');
-    //         }
-    //     } else {
-    //         toast.warning('Vui lòng đăng nhập!');
-    //         handleToggleAuthForm();
-    //     }
-    // };
+    const handleAddToCart = () => {
+        if (isAuth) {
+            if (data.quantity > 0) {
+                dispatch(fetchAddtoCart({ productId: data._id, quantity: quantityToCart }));
+                toast.success(`Đã thêm sản phẩm ${data.title} vào giỏ hàng`);
+                setTypeActionProduct('cart');
+                handleToggleModalProduct();
+            } else {
+                toast.warning('Sản phẩm hiện đã hết hàng');
+            }
+        } else {
+            toast.warning('Vui lòng đăng nhập!');
+            handleToggleAuthForm();
+        }
+    };
 
     return (
         <div className='flex-1'>
@@ -140,7 +141,7 @@ function InfoProduct({ data }: { data: any }) {
 
                 <div className='flex gap-3'>
                     <div
-                        // onClick={handleAddToCart}
+                        onClick={handleAddToCart}
                         className='border-text-des cursor-pointer border border-solid bg-black px-2 py-3 font-medium text-white uppercase hover:opacity-85'
                     >
                         Thêm vào giỏ hàng
