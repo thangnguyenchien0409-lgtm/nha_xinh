@@ -5,6 +5,7 @@ const ProductPage = lazy(() => import('@pages/UserPage/page/ProductPage/ProductP
 const ProductDetailpage = lazy(
     () => import('@pages/UserPage/page/ProductDetailPage/ProductDetailPage')
 );
+const CartPage = lazy(() => import('@pages/UserPage/page/CartPage/CartPage'));
 
 const routerUser = [
     {
@@ -18,6 +19,10 @@ const routerUser = [
     {
         path: '/:slug/:id',
         element: ProductDetailpage
+    },
+    {
+        path: '/cart-page',
+        element: CartPage
     }
 ];
 

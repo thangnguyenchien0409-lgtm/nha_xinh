@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from '@/components/Header/Header';
 import routerUser from '@/router/routerUser';
+import ModalActionProduct from '@/components/ModalActionProduct/ModalActionProduct';
 
 function UserPage() {
     return (
@@ -12,6 +13,7 @@ function UserPage() {
                     <Route key={route.path} path={route.path} element={<route.element />} />
                 ))}
             </Routes>
+            <ModalActionProduct />
         </div>
     );
 }

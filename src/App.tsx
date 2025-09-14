@@ -7,12 +7,14 @@ import { ActiveProvider } from '@/context/ActiveContext';
 import { ModalProvider } from '@/context/ModalContext';
 import Auth from '@/components/Auth/Auth';
 import { ToastProvider } from '@/context/ToastContext';
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
 
 function App() {
     return (
         <ToastProvider>
             <ModalProvider>
                 <Router>
+                    <ScrollToTop />
                     <ActiveProvider>
                         <Suspense fallback={'loading'}>
                             <Routes>

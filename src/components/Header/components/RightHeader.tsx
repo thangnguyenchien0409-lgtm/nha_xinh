@@ -2,13 +2,14 @@ import { FaUser } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
 import { dataIcon, dataSubUser, type SubNavType } from '@/components/Header/data';
-import { useContext } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { ModalContext } from '@/context/ModalContext';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import SubNav from '@/components/Header/components/SubNav';
 import { logOut } from '@/redux/authSlice';
 import InputSearch from '@/components/Header/components/InputSearch';
+import { clearCart, fetchGetAllCart } from '@/redux/cartSlice/cartSlice';
 
 type Icon = {
     name: IconType;
@@ -23,14 +24,24 @@ function RightHeader() {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+
     const isAuth = useAppSelector((state) => state.auth.isAuth);
     const user = useAppSelector((state) => state.auth.user);
+    let cart = useAppSelector((state) => state.cart.cart) || [];
+    console.log(cart);
 
-    const handleClickItem = (item: SubNavType | Icon) => {
+    const quantityCart = useMemo(() => {
+        return cart.reduce((quantity: number, item: any) => {
+            return (quantity += item.quantity);
+        }, 0);
+    }, [cart]);
+
+    const handleClickItem = async (item: SubNavType | Icon) => {
         setTypeActionProduct(item.type!);
 
         if (item.type === 'logout') {
-            dispatch(logOut());
+            await dispatch(logOut());
+            dispatch(clearCart());
         } else if (item.type === 'cart' || item.type === 'wishlist') {
             handleToggleModalProduct();
         }
@@ -38,6 +49,12 @@ function RightHeader() {
             navigate(item.path);
         }
     };
+
+    useEffect(() => {
+        if (isAuth) {
+            dispatch(fetchGetAllCart());
+        }
+    }, [dispatch, isAuth]);
 
     return (
         <div className='text-text-des flex items-center justify-center gap-3'>
@@ -53,11 +70,11 @@ function RightHeader() {
                             icon.type === 'cart' ? 'block sm:block' : 'hidden sm:block'
                         }`}
                     />
-                    {/* {cart.length > 0 && icon.type === 'cart' && (
+                    {cart.length > 0 && icon.type === 'cart' && (
                         <div className='absolute top-[-8px] right-[-10px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-center text-[12px] font-semibold text-white'>
                             <p>{quantityCart}</p>
                         </div>
-                    )} */}
+                    )}
                 </div>
             ))}
 
