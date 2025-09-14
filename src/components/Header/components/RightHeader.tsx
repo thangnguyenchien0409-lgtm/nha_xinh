@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import SubNav from '@/components/Header/components/SubNav';
 import { logOut } from '@/redux/authSlice';
+import InputSearch from '@/components/Header/components/InputSearch';
 
 type Icon = {
     name: IconType;
@@ -40,9 +41,9 @@ function RightHeader() {
 
     return (
         <div className='text-text-des flex items-center justify-center gap-3'>
-            {/* <div className='hidden md:block'>
+            <div className='hidden md:block'>
                 <InputSearch />
-            </div> */}
+            </div>
             {dataIcon.map((icon: Icon) => (
                 <div key={icon.type} className='hover:text-text-hover relative transition-all'>
                     <icon.name
