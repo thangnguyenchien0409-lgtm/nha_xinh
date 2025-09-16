@@ -42,14 +42,14 @@ export const fetchCreateOrder = createAsyncThunk<any, BodyFetchOrderType, { reje
 );
 
 export const fetchCreateCheckoutSession = createAsyncThunk<
-    { session: StripeCheckoutSession }, // return type
-    BodyFetchOrderType, // argument type
+    { session: StripeCheckoutSession },
+    BodyFetchOrderType,
     { rejectValue: string }
 >('order/fetchCreateCheckoutSession', async ({ cartId, data }, { rejectWithValue }) => {
     try {
         const res = await createCheckoutSessionApi(cartId!, data!);
+        // stripe listen --forward-to localhost:3333/api/v1/webhook-checkout
 
-        // Trả về session, không redirect ở đây
         return { session: res.data.session };
     } catch (error: any) {
         console.error('Checkout session error:', error);

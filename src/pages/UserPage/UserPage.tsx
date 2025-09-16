@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from '@/components/Header/Header';
 import routerUser from '@/router/routerUser';
 import ModalActionProduct from '@/components/ModalActionProduct/ModalActionProduct';
+import SideBar from '@/components/SideBar/SideBar';
 
 function UserPage() {
     return (
@@ -14,6 +15,7 @@ function UserPage() {
                 ))}
             </Routes>
             <ModalActionProduct />
+            <SideBar />
         </div>
     );
 }

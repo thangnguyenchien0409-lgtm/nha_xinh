@@ -28,7 +28,6 @@ function RightHeader() {
     const isAuth = useAppSelector((state) => state.auth.isAuth);
     const user = useAppSelector((state) => state.auth.user);
     let cart = useAppSelector((state) => state.cart.cart) || [];
-    console.log(cart);
 
     const quantityCart = useMemo(() => {
         return cart.reduce((quantity: number, item: any) => {
