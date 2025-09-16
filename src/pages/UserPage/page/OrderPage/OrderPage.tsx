@@ -64,9 +64,7 @@ function OrderPage() {
         if (session) {
             stripePromise.then((stripe) => {
                 if (!stripe) return;
-                stripe.redirectToCheckout({ sessionId: session.id }).catch((err) => {
-                    console.error('Stripe redirect error:', err);
-                });
+                stripe.redirectToCheckout({ sessionId: session.id }).catch(console.error);
             });
         }
     }, [session]);

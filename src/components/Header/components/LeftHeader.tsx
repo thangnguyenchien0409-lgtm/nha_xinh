@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ActiveContext } from '@/context/ActiveContext';
 import { dataNav, dataSubNav } from '@/components/Header/data';
 import SubNav from '@/components/Header/components/SubNav';
+import { ModalContext } from '@/context/ModalContext';
 
 type Item = {
     type: string;
@@ -18,7 +19,7 @@ type Item = {
 function LeftHeader() {
     const { isActiveNav, setIsActiveNav, handleNavigateHome } = useContext(ActiveContext)!;
 
-    // const { handleToggleSideBar } = useContext(ModalContext);
+    const { handleToggleSideBar } = useContext(ModalContext)!;
 
     const navigate = useNavigate();
 
@@ -29,10 +30,7 @@ function LeftHeader() {
 
     return (
         <div className='flex items-center justify-center gap-[20px]'>
-            <FiMenu
-                onClick={() => console.log('jhekko')}
-                className='cursor-pointer text-xl sm:text-3xl'
-            />
+            <FiMenu onClick={handleToggleSideBar} className='cursor-pointer text-xl sm:text-3xl' />
             <img
                 onClick={() => handleNavigateHome()}
                 className='w-[150px] cursor-pointer sm:w-[180px]'
