@@ -4,6 +4,16 @@ import { IoPaperPlaneOutline } from 'react-icons/io5';
 import { TfiCup } from 'react-icons/tfi';
 import { FaRegUserCircle } from 'react-icons/fa';
 
+
+// Admin Icon
+import { MdDashboard } from 'react-icons/md';
+import { MdOutlineCategory } from 'react-icons/md';
+import { FaCartShopping } from 'react-icons/fa6';
+import { IoMdBasket } from 'react-icons/io';
+import { HiUsers } from 'react-icons/hi';
+
+=======
+
 export const dataNavAdmin = [
     {
         path: 'dash-board',
@@ -80,3 +90,49 @@ export const dataSideBar = [
         type: 'inspiration'
     }
 ];
+
+export const dataSideBarAdmin = [
+    {
+        path: '/admin',
+        icon: MdDashboard,
+        name: 'Dashboard',
+        type: 'dashboard'
+    },
+    {
+        path: '/category',
+        icon: MdOutlineCategory,
+        name: 'Danh mục',
+        type: 'category',
+        subs: [
+            {
+                path: '/sub-category',
+                name: 'Danh mục phụ',
+                type: 'subCategory'
+            },
+            {
+                path: '/room',
+                name: 'Phòng',
+                type: 'room'
+            }
+        ]
+    },
+    {
+        path: '/product',
+        icon: FaCartShopping,
+        name: 'Sản phẩm',
+        type: 'product'
+    },
+    {
+        path: '/order',
+        icon: IoMdBasket,
+        name: 'Đơn hàng',
+        type: 'product'
+    },
+    {
+        path: '/user',
+        icon: HiUsers,
+        name: 'User',
+        type: 'user'
+    }
+];
+
