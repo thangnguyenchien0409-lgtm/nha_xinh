@@ -4,15 +4,12 @@ import { IoPaperPlaneOutline } from 'react-icons/io5';
 import { TfiCup } from 'react-icons/tfi';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-
 // Admin Icon
 import { MdDashboard } from 'react-icons/md';
 import { MdOutlineCategory } from 'react-icons/md';
 import { FaCartShopping } from 'react-icons/fa6';
 import { IoMdBasket } from 'react-icons/io';
 import { HiUsers } from 'react-icons/hi';
-
-=======
 
 export const dataNavAdmin = [
     {
@@ -135,4 +132,3 @@ export const dataSideBarAdmin = [
         type: 'user'
     }
 ];
-
