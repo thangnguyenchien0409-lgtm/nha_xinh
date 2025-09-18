@@ -7,7 +7,6 @@ import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch } from '@/hooks/reduxHook';
-import { fetchAddCategory, fetchUpdateCategory } from '@/redux/categorySlice/categorySlice';
 import { fetchAddRoom, fetchUpdateRoom } from '@/redux/roomSlice/roomSlice';
 
 type FormRoomActionType = {

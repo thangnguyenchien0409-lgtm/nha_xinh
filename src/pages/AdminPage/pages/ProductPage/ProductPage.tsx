@@ -8,32 +8,59 @@ import debounce from 'lodash.debounce';
 import { Button, Popconfirm, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { CiSquarePlus } from 'react-icons/ci';
-import FormSubCateAction from '@/components/FormAction/FormSubCateAction';
 import { subCategoryFilter } from '@/redux/subCategorySlice/subCategorySelector';
-import {
-    fetchDeleteSubCategory,
-    fetchGetAllSubCateGory,
-    searchSubCateByCategoryId,
-    searchSubCateByText
-} from '@/redux/subCategorySlice/subCategorySlice';
+import { fetchGetAllSubCateGory } from '@/redux/subCategorySlice/subCategorySlice';
 import { categoryFilter } from '@/redux/categorySlice/categorySelector';
-import { Skeleton, Spin } from 'antd';
+import {
+    fetchDeleteProduct,
+    fetchGetAllProductNoLimit,
+    searchProductByCategoryId,
+    searchProductByRoomId,
+    searchProductBySubCategoryId,
+    searchProductByText
+} from '@/redux/productSlice/productSlice';
+import { getProductSearch } from '@/redux/productSlice/productSelector';
+import { normalizeUrl } from '@/utils/normalizeUrl';
+import { useFormatNumber } from '@/hooks/useFormatNumber';
+import FormProductAction from '@/components/FormAction/FormProductAction';
+import { roomFilter } from '@/redux/roomSlice/roomSelector';
 
-type CategoryTable = {
+type ProductTable = {
     _id: string;
-    name: string;
+    imageCover: string;
+    title: string;
+    price: number;
+    quantity: number;
+
     action: string[];
 };
 
-function SubCategoryPage() {
+function ProductPage() {
     const [isOpenCard, setIsOpenCard] = useState(false);
     const [typeAction, setTypeAction] = useState<'update' | 'create' | ''>('');
     const [currentData, setCurrentData] = useState<any | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
 
     const dispatch = useAppDispatch();
-    const loading = useAppSelector((state) => state.subCategory.loading);
+    const loading = useAppSelector((state) => state.product.loading);
+    const products = useAppSelector(getProductSearch);
     const subCategory = useAppSelector(subCategoryFilter) || [];
     const category = useAppSelector(categoryFilter);
+    const room = useAppSelector(roomFilter);
+
+    const subCategoryOptions = useMemo(() => {
+        return subCategory
+            .filter((sc) => sc.category === selectedCategory)
+            .map((c) => ({
+                value: c._id,
+                label: c.name
+            }));
+    }, [subCategory, selectedCategory]);
+
+    const roomOptions = room.map((c) => ({
+        value: c._id,
+        label: c.name
+    }));
 
     const categoryOptions = category.map((c) => ({
         value: c._id,
@@ -43,7 +70,7 @@ function SubCategoryPage() {
     const debouncedSearch = useMemo(
         () =>
             debounce((value: string) => {
-                dispatch(searchSubCateByText(value));
+                dispatch(searchProductByText(value));
             }, 300),
         [dispatch]
     );
@@ -52,8 +79,17 @@ function SubCategoryPage() {
         debouncedSearch(e.target.value);
     };
 
-    const handleFilterSubCateByCategoryId = (value: string | undefined) => {
-        dispatch(searchSubCateByCategoryId(value));
+    const handleFilterProductByCategoryId = (value: string | undefined) => {
+        setSelectedCategory(value);
+        dispatch(searchProductByCategoryId(value));
+    };
+
+    const handleFilterProductBySubCategoryId = (value: string | undefined) => {
+        dispatch(searchProductBySubCategoryId(value));
+    };
+
+    const handleFilterProductByRoomId = (value: string | undefined) => {
+        dispatch(searchProductByRoomId(value));
     };
 
     const handleToggleCard = () => {
@@ -64,7 +100,7 @@ function SubCategoryPage() {
         handleToggleCard();
         setTypeAction(type);
         if (type === 'update' && id) {
-            const selected = subCategory.find((c) => c._id === id);
+            const selected = products.find((c) => c._id === id);
             setCurrentData(selected || null);
         } else {
             setCurrentData(null);
@@ -72,20 +108,45 @@ function SubCategoryPage() {
     };
 
     const handleDeleteItem = (id: string) => {
-        dispatch(fetchDeleteSubCategory(id));
+        dispatch(fetchDeleteProduct(id));
     };
 
-    const columns: ColumnsType<CategoryTable> = [
+    const columns: ColumnsType<ProductTable> = [
         {
-            title: 'ID',
-            dataIndex: '_id',
-            key: '_id'
+            title: 'Ảnh',
+            dataIndex: 'imageCover',
+            key: 'imageCover',
+            render: (imageCover) => {
+                if (!imageCover) return <span className='text-gray-400'>Không có ảnh</span>;
+                const url = typeof imageCover === 'string' ? imageCover : imageCover[0]?.url;
+                const finalUrl = normalizeUrl(url); // luôn trả về /uploads/filename
+                return (
+                    <img
+                        src={finalUrl}
+                        alt='Ảnh sản phẩm'
+                        className='h-16 w-16 rounded border border-gray-200 object-cover'
+                    />
+                );
+            }
         },
         {
-            title: 'Tên danh mục',
-            dataIndex: 'name',
-            key: 'name',
-            sorter: (a, b) => a.name.localeCompare(b.name)
+            title: 'Tên sản phẩm',
+            dataIndex: 'title',
+            key: 'title',
+            sorter: (a, b) => a.title.localeCompare(b.title)
+        },
+        {
+            title: 'Giá',
+            dataIndex: 'price',
+            key: 'price',
+            sorter: (a, b) => a.price - b.price,
+            render: (price) => `${useFormatNumber(price)} ₫`
+        },
+        {
+            title: 'Số lượng',
+            dataIndex: 'quantity',
+            key: 'quantity',
+            sorter: (a, b) => a.quantity - b.quantity
         },
         {
             title: 'Thao tác',
@@ -113,6 +174,7 @@ function SubCategoryPage() {
     ];
 
     useEffect(() => {
+        dispatch(fetchGetAllProductNoLimit());
         dispatch(fetchGetAllSubCateGory());
         dispatch(fetchGetAllCategory({ page: 1, limit: 1000 }));
     }, [dispatch]);
@@ -125,7 +187,7 @@ function SubCategoryPage() {
 
     return (
         <div className='pr-3'>
-            <h1 className='mt-4 font-semibold'>Danh mục phụ</h1>
+            <h1 className='mt-4 font-semibold'>Sản phẩm</h1>
             <div className='mb-4 flex items-center gap-4'>
                 <Input
                     placeholder='Tìm kiếm danh mục'
@@ -137,7 +199,23 @@ function SubCategoryPage() {
                     allowClear
                     options={categoryOptions}
                     placeholder='Chọn danh mục'
-                    onChange={handleFilterSubCateByCategoryId}
+                    onChange={handleFilterProductByCategoryId}
+                    style={{ height: 40, width: 200 }}
+                />
+
+                <Select
+                    allowClear
+                    options={subCategoryOptions}
+                    placeholder='Chọn danh mục phụ'
+                    onChange={handleFilterProductBySubCategoryId}
+                    style={{ height: 40, width: 200 }}
+                />
+
+                <Select
+                    allowClear
+                    options={roomOptions}
+                    placeholder='Chọn phòng'
+                    onChange={handleFilterProductByRoomId}
                     style={{ height: 40, width: 200 }}
                 />
 
@@ -150,10 +228,10 @@ function SubCategoryPage() {
                 </Tooltip>
             </div>
 
-            <Table<CategoryTable>
+            <Table<ProductTable>
                 rowKey='_id'
                 columns={columns}
-                dataSource={subCategory}
+                dataSource={products}
                 bordered
                 loading={loading}
                 pagination={false}
@@ -161,15 +239,15 @@ function SubCategoryPage() {
                 components={{
                     body: {
                         row: (props) =>
-                            !isOpenCard ? (
+                            !isOpenCard && !loading ? (
                                 <AnimatePresence>
                                     <motion.tr
                                         {...props}
                                         // initial={{ opacity: 0, y: 20 }}
                                         // animate={{ opacity: 1, y: 0 }}
                                         // exit={{ opacity: 0, y: -20 }}
-                                        layout
                                         transition={{ duration: 0.7 }}
+                                        layout
                                     />
                                 </AnimatePresence>
                             ) : (
@@ -178,14 +256,14 @@ function SubCategoryPage() {
                     }
                 }}
             />
-            <FormSubCateAction
+            <FormProductAction
                 isOpenCard={isOpenCard}
                 handleToggleCard={handleToggleCard}
                 typeAction={typeAction}
-                data={currentData}
+                productData={currentData}
             />
         </div>
     );
 }
 
-export default SubCategoryPage;
+export default ProductPage;

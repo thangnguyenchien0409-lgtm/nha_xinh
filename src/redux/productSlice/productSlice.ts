@@ -1,6 +1,13 @@
-import { getAllProductsApi, getProductApi } from '@/apis/productService';
+import {
+    addProductApi,
+    deleteProductApi,
+    getAllProductsApi,
+    getProductApi,
+    updateProductApi
+} from '@/apis/productService';
 import type { ApiResponse, FetchParam, InitialStateType } from '@/redux/productSlice/product.type';
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 const initialViewed: any[] = (() => {
     try {
@@ -22,7 +29,11 @@ const initialState: InitialStateType = {
     viewedProduct: initialViewed,
     filterSelectProduct: '',
     filterMaterial: '',
-    searchText: ''
+    searchText: '',
+    categoryId: '',
+    subCategoryId: '',
+    roomId: '',
+    loading: false
 };
 
 export const fetchGetAllProduct = createAsyncThunk<
@@ -66,6 +77,49 @@ export const fetchProductById = createAsyncThunk<any, string, { rejectValue: str
     }
 );
 
+export const fetchAddProduct = createAsyncThunk<any, FetchParam, { rejectValue: string }>(
+    'product/fetchAddProduct',
+    async ({ data }, { rejectWithValue }) => {
+        try {
+            const res = await addProductApi(data);
+
+            toast.success('Thêm thành công');
+            return res.data;
+        } catch (error: any) {
+            toast.error(error.response?.data?.message);
+            return rejectWithValue(error.response?.data?.message || error.message);
+        }
+    }
+);
+
+export const fetchUpdateProduct = createAsyncThunk<any, FetchParam, { rejectValue: string }>(
+    'product/fetchUpdateProduct',
+    async ({ id, data }, { rejectWithValue }) => {
+        try {
+            const res = await updateProductApi(id!, data);
+            toast.success('Sửa thành công');
+            return res.data;
+        } catch (error: any) {
+            toast.error(error.response?.data?.message);
+            return rejectWithValue(error.response?.data?.message || error.message);
+        }
+    }
+);
+
+export const fetchDeleteProduct = createAsyncThunk<any, string, { rejectValue: string }>(
+    'product/fetchDeleteProduct',
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await deleteProductApi(id);
+            toast.success('Xóa thành công');
+            return res.data;
+        } catch (error: any) {
+            toast.error(error.response?.data?.message);
+            return rejectWithValue(error.response?.data?.message || error.message);
+        }
+    }
+);
+
 const productSlice = createSlice({
     name: 'product',
     initialState,
@@ -94,6 +148,15 @@ const productSlice = createSlice({
         },
         searchProductByText(state, action: PayloadAction<string>) {
             state.searchText = action.payload;
+        },
+        searchProductByCategoryId(state, action) {
+            state.categoryId = action.payload;
+        },
+        searchProductBySubCategoryId(state, action) {
+            state.subCategoryId = action.payload;
+        },
+        searchProductByRoomId(state, action) {
+            state.roomId = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -111,13 +174,16 @@ const productSlice = createSlice({
         });
         builder.addCase(fetchGetAllProductNoLimit.pending, (state) => {
             state.status = 'loading';
+            state.loading = true;
         });
         builder.addCase(fetchGetAllProductNoLimit.fulfilled, (state, action) => {
             state.status = 'idle';
             state.productNoLimit = action.payload.Document || [];
+            state.loading = false;
         });
         builder.addCase(fetchGetAllProductNoLimit.rejected, (state) => {
             state.status = 'error';
+            state.loading = false;
         });
 
         // PRODUCT BY ID
@@ -132,6 +198,49 @@ const productSlice = createSlice({
         builder.addCase(fetchProductById.rejected, (state) => {
             state.status = 'error';
         });
+
+        // --- ADD ---
+        builder.addCase(fetchAddProduct.pending, (state) => {
+            state.status = 'loading';
+        });
+        builder.addCase(fetchAddProduct.fulfilled, (state, action) => {
+            state.status = 'idle';
+            if (action.payload?.Document) {
+                state.productNoLimit.unshift(action.payload.Document);
+            }
+        });
+        builder.addCase(fetchAddProduct.rejected, (state) => {
+            state.status = 'error';
+        });
+
+        // --- UPDATE ---
+        builder.addCase(fetchUpdateProduct.pending, (state) => {
+            state.status = 'loading';
+        });
+        builder.addCase(fetchUpdateProduct.fulfilled, (state, action) => {
+            state.status = 'idle';
+            if (action.payload?.Document) {
+                state.productNoLimit = state.productNoLimit.map((item) =>
+                    item._id === action.payload.Document._id ? action.payload.Document : item
+                );
+            }
+        });
+        builder.addCase(fetchUpdateProduct.rejected, (state) => {
+            state.status = 'error';
+        });
+
+        // --- DELETE ---
+        builder.addCase(fetchDeleteProduct.pending, (state) => {
+            state.status = 'loading';
+        });
+        builder.addCase(fetchDeleteProduct.fulfilled, (state, action) => {
+            state.status = 'idle';
+            const id = action.meta.arg;
+            state.productNoLimit = state.productNoLimit.filter((item) => item._id !== id);
+        });
+        builder.addCase(fetchDeleteProduct.rejected, (state) => {
+            state.status = 'error';
+        });
     }
 });
 
@@ -140,7 +249,10 @@ export const {
     addViewedProduct,
     filterSelectProduct,
     filterProductByMaterial,
-    searchProductByText
+    searchProductByText,
+    searchProductByCategoryId,
+    searchProductBySubCategoryId,
+    searchProductByRoomId
 } = productSlice.actions;
 
 export default productSlice;

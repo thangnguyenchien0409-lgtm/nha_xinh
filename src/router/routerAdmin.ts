@@ -5,6 +5,7 @@ const SubCategoryPage = lazy(
     () => import('@pages/AdminPage/pages/SubCategoryPage/SubCategoryPage')
 );
 const RoomPage = lazy(() => import('@/pages/AdminPage/pages/RoomPage/RoomPage'));
+const Productpage = lazy(() => import('@/pages/AdminPage/pages/ProductPage/ProductPage'));
 
 const routerAdmin = [
     {
@@ -18,6 +19,10 @@ const routerAdmin = [
     {
         path: '/room',
         element: RoomPage
+    },
+    {
+        path: '/product',
+        element: Productpage
     }
 ];
 

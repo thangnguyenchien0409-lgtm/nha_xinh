@@ -6,6 +6,9 @@ export const productListNoLimit = (state: RootState) => state.product.productNoL
 export const searchSelectProduct = (state: RootState) => state.product.filterSelectProduct;
 export const searchProductByMaterial = (state: RootState) => state.product.filterMaterial;
 export const searchProductByText = (state: RootState) => state.product.searchText;
+export const searchProductByCategory = (state: RootState) => state.product.categoryId;
+export const searchProductBySubCategory = (state: RootState) => state.product.subCategoryId;
+export const searchProductByRoom = (state: RootState) => state.product.roomId;
 
 export const getProductFilter = createSelector(
     [productList, searchSelectProduct, searchProductByMaterial],
@@ -44,8 +47,14 @@ export const getProductFilter = createSelector(
 );
 
 export const getProductSearch = createSelector(
-    [productListNoLimit, searchProductByText],
-    (productList, searchText) => {
+    [
+        productListNoLimit,
+        searchProductByText,
+        searchProductByCategory,
+        searchProductBySubCategory,
+        searchProductByRoom
+    ],
+    (productList, searchText, categoryId, subCategoryId, roomId) => {
         let list: any[] = productList;
 
         function removeVietnameseTones(str: string) {
@@ -64,6 +73,22 @@ export const getProductSearch = createSelector(
 
                 return title.includes(text) || titleNoAccent.includes(textNoAccent);
             });
+        }
+
+        if (categoryId) {
+            list = list.filter((item) => item.category._id === categoryId);
+        }
+
+        if (subCategoryId) {
+            list = list.filter((item) =>
+                item.subCategories?.some(
+                    (sc: any) => sc === subCategoryId || sc._id === subCategoryId
+                )
+            );
+        }
+
+        if (roomId) {
+            list = list.filter((item) => item.brand._id === roomId);
         }
         return list;
     }
