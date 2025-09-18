@@ -8,7 +8,7 @@ export const getProductApi = async (id: string) => {
     return await axiosClient.get(`products/${id}`);
 };
 
-export const addProductApi = async (data: any[]) => {
+export const addProductApi = async (data: any) => {
     return await axiosClient.post('products', data, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -16,7 +16,7 @@ export const addProductApi = async (data: any[]) => {
     });
 };
 
-export const updateProductApi = async (id: string, data: any[]) => {
+export const updateProductApi = async (id: string, data: any) => {
     return await axiosClient.patch(`products/${id}`, data, {
         headers: {
             'Content-Type': 'multipart/form-data'

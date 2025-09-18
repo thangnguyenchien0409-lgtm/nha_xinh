@@ -10,6 +10,10 @@ export type InitialStateType = {
     filterSelectProduct: string | null;
     filterMaterial: string | null;
     searchText: string;
+    categoryId: string;
+    subCategoryId: string;
+    roomId: string;
+    loading: boolean;
 };
 
 export type ApiResponse = {
@@ -22,4 +26,6 @@ export type ApiResponse = {
 export type FetchParam = {
     page?: number | undefined;
     limit?: number | undefined;
+    data?: any;
+    id?: string;
 };
