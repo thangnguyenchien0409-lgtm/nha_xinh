@@ -1,19 +1,22 @@
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
-import {
-    fetchDeleteCategory,
-    fetchGetAllCategory,
-    searchCategoryByText
-} from '@/redux/categorySlice/categorySlice';
+import { fetchGetAllCategory } from '@/redux/categorySlice/categorySlice';
 import { useEffect, useMemo, useState } from 'react';
-import { Input, Table, Tooltip } from 'antd';
+import { Input, Select, Table, Tooltip } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { AnimatePresence, motion } from 'framer-motion';
-import { categoryFilter } from '@/redux/categorySlice/categorySelector';
 import debounce from 'lodash.debounce';
 import { Button, Popconfirm, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { CiSquarePlus } from 'react-icons/ci';
-import FormCategotyAction from '@/components/FormAction/FormCategotyAction';
+import FormSubCateAction from '@/components/FormAction/FormSubCateAction';
+import { subCategoryFilter } from '@/redux/subCategorySlice/subCategorySelector';
+import {
+    fetchDeleteSubCategory,
+    fetchGetAllSubCateGory,
+    searchSubCateByCategoryId,
+    searchSubCateByText
+} from '@/redux/subCategorySlice/subCategorySlice';
+import { categoryFilter } from '@/redux/categorySlice/categorySelector';
 import { Skeleton, Spin } from 'antd';
 
 type CategoryTable = {
@@ -22,24 +25,35 @@ type CategoryTable = {
     action: string[];
 };
 
-function CategoryPage() {
+function SubCategoryPage() {
     const [isOpenCard, setIsOpenCard] = useState(false);
     const [typeAction, setTypeAction] = useState<'update' | 'create' | ''>('');
     const [currentData, setCurrentData] = useState<any | null>(null);
+
     const dispatch = useAppDispatch();
-    const loading = useAppSelector((state) => state.category.loading);
-    const category = useAppSelector(categoryFilter) || [];
+    const loading = useAppSelector((state) => state.subCategory.loading);
+    const subCategory = useAppSelector(subCategoryFilter) || [];
+    const category = useAppSelector(categoryFilter);
+
+    const categoryOptions = category.map((c) => ({
+        value: c._id,
+        label: c.name
+    }));
 
     const debouncedSearch = useMemo(
         () =>
             debounce((value: string) => {
-                dispatch(searchCategoryByText(value));
+                dispatch(searchSubCateByText(value));
             }, 300),
         [dispatch]
     );
 
     const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         debouncedSearch(e.target.value);
+    };
+
+    const handleFilterSubCateByCategoryId = (value: string | undefined) => {
+        dispatch(searchSubCateByCategoryId(value));
     };
 
     const handleToggleCard = () => {
@@ -50,7 +64,7 @@ function CategoryPage() {
         handleToggleCard();
         setTypeAction(type);
         if (type === 'update' && id) {
-            const selected = category.find((c) => c._id === id);
+            const selected = subCategory.find((c) => c._id === id);
             setCurrentData(selected || null);
         } else {
             setCurrentData(null);
@@ -58,7 +72,7 @@ function CategoryPage() {
     };
 
     const handleDeleteItem = (id: string) => {
-        dispatch(fetchDeleteCategory(id));
+        dispatch(fetchDeleteSubCategory(id));
     };
 
     const columns: ColumnsType<CategoryTable> = [
@@ -99,6 +113,7 @@ function CategoryPage() {
     ];
 
     useEffect(() => {
+        dispatch(fetchGetAllSubCateGory());
         dispatch(fetchGetAllCategory({ page: 1, limit: 1000 }));
     }, [dispatch]);
 
@@ -110,12 +125,20 @@ function CategoryPage() {
 
     return (
         <div className='pr-3'>
-            <h1 className='mt-4 font-semibold'>Danh mục</h1>
+            <h1 className='mt-4 font-semibold'>Danh mục phụ</h1>
             <div className='mb-4 flex items-center gap-4'>
                 <Input
                     placeholder='Tìm kiếm danh mục'
                     style={{ width: 300, height: 40 }}
                     onChange={handleSearchInput}
+                />
+
+                <Select
+                    allowClear
+                    options={categoryOptions}
+                    placeholder='Chọn danh mục'
+                    onChange={handleFilterSubCateByCategoryId}
+                    style={{ height: 40, width: 200 }}
                 />
 
                 <Tooltip placement='top' title='Thêm danh mục'>
@@ -132,8 +155,9 @@ function CategoryPage() {
                 <Table<CategoryTable>
                     rowKey='_id'
                     columns={columns}
-                    dataSource={category}
+                    dataSource={subCategory}
                     bordered
+                    loading={loading}
                     pagination={false}
                     scroll={{ y: 450 }}
                     components={{
@@ -146,7 +170,7 @@ function CategoryPage() {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -20 }}
-                                            transition={{ duration: 0.3 }}
+                                            transition={{ duration: 0.7 }}
                                         />
                                     </AnimatePresence>
                                 ) : (
@@ -156,7 +180,7 @@ function CategoryPage() {
                     }}
                 />
             )}
-            <FormCategotyAction
+            <FormSubCateAction
                 isOpenCard={isOpenCard}
                 handleToggleCard={handleToggleCard}
                 typeAction={typeAction}
@@ -166,4 +190,4 @@ function CategoryPage() {
     );
 }
 
-export default CategoryPage;
+export default SubCategoryPage;

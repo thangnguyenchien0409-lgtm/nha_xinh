@@ -24,8 +24,9 @@ function SideBarAdmin() {
         setIsActive(name);
     };
 
-    const handleClickSubItem = (subName: string) => {
+    const handleClickSubItem = (subName: string, path: string) => {
         setActiveSub(subName);
+        navigate(`/admin${path}`);
     };
 
     return (
@@ -40,14 +41,12 @@ function SideBarAdmin() {
                     <div
                         key={item.path}
                         className={`my-5 rounded-[4px] ${
-                            isActive === item.name
-                                ? 'bg-[#e0f1ed] text-[#1aa876]'
-                                : 'text-[#333] transition-all'
+                            isActive === item.name ? 'shadow-box' : 'text-[#333] transition-all'
                         }`}
                     >
                         <div
                             onClick={() => handleClickSideBarItem(item.name, item.path)}
-                            className='flex cursor-pointer items-center justify-between gap-4 px-2 py-2 transition-all'
+                            className='flex cursor-pointer items-center justify-between gap-4 rounded-2xl px-2 py-2 transition-all'
                         >
                             <div className='flex items-center gap-4'>
                                 <item.icon size={23} />
@@ -72,10 +71,10 @@ function SideBarAdmin() {
                             {item.subs?.map((sub) => (
                                 <div
                                     key={sub.path}
-                                    onClick={() => handleClickSubItem(sub.name)}
-                                    className={`ml-9 cursor-pointer rounded px-2 py-3 text-[14px] transition-all hover:text-[#1aa876] ${
+                                    onClick={() => handleClickSubItem(sub.name, sub.path)}
+                                    className={`ml-9 cursor-pointer rounded px-2 py-3 text-[14px] transition-all hover:underline ${
                                         activeSub === sub.name
-                                            ? 'font-semibold text-[#1aa876]'
+                                            ? 'font-semibold underline'
                                             : 'text-[#555]'
                                     }`}
                                 >

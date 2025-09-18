@@ -6,7 +6,7 @@ function AdminPage() {
     return (
         <div className=''>
             <SideBarAdmin />
-            <div className='ml-[250px] py-[30px]'>
+            <div className='font-monterrat ml-[250px] py-2'>
                 <Routes>
                     {routerAdmin.map((route) => (
                         <Route key={route.path} path={route.path} element={<route.element />} />

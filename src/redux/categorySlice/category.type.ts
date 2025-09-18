@@ -5,9 +5,13 @@ export type InitialStateCategoryType = {
     numberPage: number;
     limit: number;
     total: number;
+    searchText: string;
+    loading: boolean;
 };
 
 export type BodyFetchCategoryType = {
     page?: number;
     limit?: number;
+    data?: any;
+    id?: string;
 };
