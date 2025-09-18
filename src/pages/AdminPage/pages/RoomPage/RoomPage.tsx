@@ -14,26 +14,27 @@ import { Button, Popconfirm, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { CiSquarePlus } from 'react-icons/ci';
 import FormCategotyAction from '@/components/FormAction/FormCategotyAction';
-import { Skeleton, Spin } from 'antd';
+import { roomFilter } from '@/redux/roomSlice/roomSelector';
+import { fetchDeleteRoom, fetchGetAllRoom, searchRoomByText } from '@/redux/roomSlice/roomSlice';
+import FormRoomAction from '@/components/FormAction/FormRoomAction';
 
-type CategoryTable = {
+type RoomTable = {
     _id: string;
     name: string;
     action: string[];
 };
 
-function CategoryPage() {
+function RoomPage() {
     const [isOpenCard, setIsOpenCard] = useState(false);
     const [typeAction, setTypeAction] = useState<'update' | 'create' | ''>('');
     const [currentData, setCurrentData] = useState<any | null>(null);
     const dispatch = useAppDispatch();
-    const loading = useAppSelector((state) => state.category.loading);
-    const category = useAppSelector(categoryFilter) || [];
+    const room = useAppSelector(roomFilter);
 
     const debouncedSearch = useMemo(
         () =>
             debounce((value: string) => {
-                dispatch(searchCategoryByText(value));
+                dispatch(searchRoomByText(value));
             }, 300),
         [dispatch]
     );
@@ -50,7 +51,7 @@ function CategoryPage() {
         handleToggleCard();
         setTypeAction(type);
         if (type === 'update' && id) {
-            const selected = category.find((c) => c._id === id);
+            const selected = room.find((c) => c._id === id);
             setCurrentData(selected || null);
         } else {
             setCurrentData(null);
@@ -58,17 +59,17 @@ function CategoryPage() {
     };
 
     const handleDeleteItem = (id: string) => {
-        dispatch(fetchDeleteCategory(id));
+        dispatch(fetchDeleteRoom(id));
     };
 
-    const columns: ColumnsType<CategoryTable> = [
+    const columns: ColumnsType<RoomTable> = [
         {
             title: 'ID',
             dataIndex: '_id',
             key: '_id'
         },
         {
-            title: 'Tên danh mục',
+            title: 'Tên phòng',
             dataIndex: 'name',
             key: 'name',
             sorter: (a, b) => a.name.localeCompare(b.name)
@@ -99,7 +100,7 @@ function CategoryPage() {
     ];
 
     useEffect(() => {
-        dispatch(fetchGetAllCategory({ page: 1, limit: 1000 }));
+        dispatch(fetchGetAllRoom());
     }, [dispatch]);
 
     useEffect(() => {
@@ -110,7 +111,7 @@ function CategoryPage() {
 
     return (
         <div className='pr-3'>
-            <h1 className='mt-4 font-semibold'>Danh mục</h1>
+            <h1 className='mt-4 font-semibold'>Phòng</h1>
             <div className='mb-4 flex items-center gap-4'>
                 <Input
                     placeholder='Tìm kiếm danh mục'
@@ -118,7 +119,7 @@ function CategoryPage() {
                     onChange={handleSearchInput}
                 />
 
-                <Tooltip placement='top' title='Thêm danh mục'>
+                <Tooltip placement='top' title='Thêm phòng'>
                     <CiSquarePlus
                         onClick={() => handleClickAction('create', null)}
                         size={50}
@@ -126,13 +127,11 @@ function CategoryPage() {
                     />
                 </Tooltip>
             </div>
-            {loading ? (
-                <Skeleton active paragraph={{ rows: 6 }} />
-            ) : (
-                <Table<CategoryTable>
+            <div>
+                <Table<RoomTable>
                     rowKey='_id'
                     columns={columns}
-                    dataSource={category}
+                    dataSource={room}
                     bordered
                     pagination={false}
                     scroll={{ y: 450 }}
@@ -143,9 +142,9 @@ function CategoryPage() {
                                     <AnimatePresence>
                                         <motion.tr
                                             {...props}
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 120 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -20 }}
+                                            exit={{ opacity: 0, y: -120 }}
                                             transition={{ duration: 0.3 }}
                                         />
                                     </AnimatePresence>
@@ -155,8 +154,8 @@ function CategoryPage() {
                         }
                     }}
                 />
-            )}
-            <FormCategotyAction
+            </div>
+            <FormRoomAction
                 isOpenCard={isOpenCard}
                 handleToggleCard={handleToggleCard}
                 typeAction={typeAction}
@@ -166,4 +165,4 @@ function CategoryPage() {
     );
 }
 
-export default CategoryPage;
+export default RoomPage;
