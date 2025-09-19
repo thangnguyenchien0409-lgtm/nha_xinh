@@ -58,13 +58,19 @@ function OrderDetailPage() {
                             Đơn hàng
                         </p>
                         <div className='mt-8 grid grid-cols-2'>
-                            <div className='border-text-title w-full border border-solid p-[30px]'>
+                            <div className='border-text-title w-full border border-solid px-[30px]'>
                                 <div ref={containerRef} className='max-h-[500px] overflow-y-auto'>
                                     {productOrder.map((item) => (
                                         <div
                                             key={item._id}
-                                            className='w-full border-b border-solid border-[#ddd] py-3 pr-3 last:border-transparent'
+                                            className='w-full border-b border-solid border-[#ddd] py-[30px] pr-3 last:border-transparent'
                                         >
+                                            <div className='flex justify-between'>
+                                                <p className='text-text-title text-[20px] font-semibold'>
+                                                    Mã đơn hàng
+                                                </p>
+                                                <p>{item._id}</p>
+                                            </div>
                                             {item.cartItems.map((product: any) => (
                                                 <div
                                                     key={product._id}
