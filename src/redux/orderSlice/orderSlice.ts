@@ -2,7 +2,8 @@ import {
     cancelOrderApi,
     createCheckoutSessionApi,
     createOrderApi,
-    getAllOrdersApi
+    getAllOrdersApi,
+    updateOrderStatusApi
 } from '@/apis/orderService';
 import type {
     BodyFetchOrderType,
@@ -20,7 +21,9 @@ const initialState: InitialStateOrderType = {
     order: null,
     allOrder: [],
     isStatusOrder: false,
-    session: null
+    session: null,
+    loading: false,
+    searchStatus: ''
 };
 
 export const fetchCreateOrder = createAsyncThunk<any, BodyFetchOrderType, { rejectValue: string }>(
@@ -84,12 +87,30 @@ export const fetchCancelledOrder = createAsyncThunk<
     }
 });
 
+export const fetchUpdateStatusOrder = createAsyncThunk<
+    any,
+    BodyFetchOrderType,
+    { rejectValue: string }
+>('order/fetchUpdateStatusOrder', async ({ orderId, statusOrder } = {}, { rejectWithValue }) => {
+    try {
+        const res = await updateOrderStatusApi(orderId!, statusOrder!);
+        console.log(res.data);
+        toast.success('Sửa trạng thái thành công');
+        return res.data;
+    } catch (error: any) {
+        return rejectWithValue(error.response?.data || error.message);
+    }
+});
+
 const orderSlice = createSlice({
     name: 'order',
     initialState,
     reducers: {
         resetStatus: (state) => {
             state.status = 'idle';
+        },
+        searchOrderByStatus: (state, action) => {
+            state.searchStatus = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -139,10 +160,25 @@ const orderSlice = createSlice({
             })
             .addCase(fetchCancelledOrder.rejected, (state) => {
                 state.status = 'error';
+            })
+
+            // update status order
+            .addCase(fetchUpdateStatusOrder.pending, (state) => {
+                state.status = 'loading';
+                state.loading = true;
+            })
+            .addCase(fetchUpdateStatusOrder.fulfilled, (state, action) => {
+                state.status = 'success';
+                state.order = action.payload.order;
+                state.loading = false;
+            })
+            .addCase(fetchUpdateStatusOrder.rejected, (state) => {
+                state.status = 'error';
+                state.loading = false;
             });
     }
 });
 
-export const { resetStatus } = orderSlice.actions;
+export const { resetStatus, searchOrderByStatus } = orderSlice.actions;
 
 export default orderSlice;

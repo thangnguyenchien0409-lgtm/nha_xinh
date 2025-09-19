@@ -13,6 +13,8 @@ export type InitialStateOrderType = {
     allOrder: any[];
     isStatusOrder: boolean;
     session: StripeCheckoutSession | null;
+    loading: boolean;
+    searchStatus: string;
 };
 
 export type BodyFetchOrderType = {
@@ -21,4 +23,5 @@ export type BodyFetchOrderType = {
     page?: number;
     limit?: number;
     orderId?: string;
+    statusOrder?: string;
 };
