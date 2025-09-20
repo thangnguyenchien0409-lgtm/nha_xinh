@@ -1,33 +1,37 @@
 import Footer from '@/components/Footer/Footer';
 import MainLayout from '@/components/Layout/MainLayout';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
-import { useFormatNumber } from '@/hooks/useFormatNumber';
-import { fetchCancelledOrder, fetchGetAllOrder } from '@/redux/orderSlice/orderSlice';
+import { fetchGetAllOrder, searchOrderByStatus } from '@/redux/orderSlice/orderSlice';
 import { resetStatus } from '@/redux/orderSlice/orderSlice';
 import OrderEmpty from '@assets/img/order_empty_icon.png';
 import { useNavigate } from 'react-router-dom';
 
 import { useEffect, useRef, useState } from 'react';
+import { dataNavOrder } from '@/pages/UserPage/page/OrderDetailPage/data';
+import OrderItem from '@/pages/UserPage/page/OrderDetailPage/OrderItem';
+import { orderFilter } from '@/redux/orderSlice/orderSelector';
 
 function OrderDetailPage() {
+    const [isActiveNavOrder, setIsActiveNavOrder] = useState<string>('all');
     const [limit, setLimit] = useState(5);
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const allOrder = useAppSelector((state) => state.order.allOrder);
+    const allOrder = useAppSelector(orderFilter);
+    console.log(allOrder);
     const isStatusOrder = useAppSelector((state) => state.order.isStatusOrder);
 
     const productOrder: any[] = allOrder?.orders || [];
 
-    const handleCancelledOrder = (orderId: string) => {
-        dispatch(fetchCancelledOrder({ orderId }));
-        dispatch(fetchGetAllOrder({ page: 1, limit }));
-    };
-
     const handleNavigateProduct = () => {
         navigate('/products-page');
         dispatch(resetStatus());
+    };
+
+    const handleActiveNavOrder = (type: string) => {
+        dispatch(searchOrderByStatus(type));
+        setIsActiveNavOrder(type);
     };
 
     useEffect(() => {
@@ -36,7 +40,6 @@ function OrderDetailPage() {
 
     useEffect(() => {
         const container: any = containerRef.current;
-
         if (!container) return;
 
         const handleScroll = () => {
@@ -47,108 +50,30 @@ function OrderDetailPage() {
 
         container.addEventListener('scroll', handleScroll);
         return () => container.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [productOrder.length]);
 
     return (
         <div>
             <MainLayout>
+                <div className='mt-[90px] flex w-full justify-between gap-6 overflow-x-auto rounded-[12px] border border-solid border-[#e1e1e1] bg-white px-2 py-3'>
+                    {dataNavOrder.map((i) => (
+                        <div
+                            key={i.type}
+                            onClick={() => handleActiveNavOrder(i.type)}
+                            className={`min-w-[150px] flex-1 cursor-pointer rounded-[12px] px-2 py-3 text-center ${
+                                isActiveNavOrder === i.type
+                                    ? 'text-text-title bg-[#f6f6f6] font-bold'
+                                    : 'font-semibold text-[#ccc]'
+                            }`}
+                        >
+                            {i.title}
+                        </div>
+                    ))}
+                </div>
                 {productOrder.length > 0 ? (
-                    <div className='mt-[120px] border-t border-solid border-[#ebebeb] py-[50px] lg:mt-[100px]'>
-                        <p className='text-text-title font-monterrat text-[28px] font-semibold'>
-                            Đơn hàng
-                        </p>
-                        <div className='mt-8 grid grid-cols-2'>
-                            <div className='border-text-title w-full border border-solid px-[30px]'>
-                                <div ref={containerRef} className='max-h-[500px] overflow-y-auto'>
-                                    {productOrder.map((item) => (
-                                        <div
-                                            key={item._id}
-                                            className='w-full border-b border-solid border-[#ddd] py-[30px] pr-3 last:border-transparent'
-                                        >
-                                            <div className='flex justify-between'>
-                                                <p className='text-text-title text-[20px] font-semibold'>
-                                                    Mã đơn hàng
-                                                </p>
-                                                <p>{item._id}</p>
-                                            </div>
-                                            {item.cartItems.map((product: any) => (
-                                                <div
-                                                    key={product._id}
-                                                    className='flex h-[120px] w-full items-center justify-between lg:h-[99px]'
-                                                >
-                                                    <div className='flex items-center gap-4'>
-                                                        <div className='h-[90px] max-h-[200px] w-[120px] overflow-y-auto'>
-                                                            <img
-                                                                className='h-full w-full object-cover'
-                                                                src={product.productId.imageCover}
-                                                                alt=''
-                                                            />
-                                                        </div>
-                                                        <div className='text-text-title'>
-                                                            <p>Số lượng:{product.quantity}</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className='flex gap-2'>
-                                                        <p>Giá:</p>
-                                                        {useFormatNumber(product.price)}
-                                                        <span className='underline'>đ</span>
-                                                    </div>
-                                                </div>
-                                            ))}
-
-                                            <div className='text-text-des mt-4 flex items-center justify-between text-sm font-medium'>
-                                                <p className='text-[18px]'>Trạng thái</p>
-                                                {item?.status === 'pending' ? (
-                                                    <p>Chờ xác nhận</p>
-                                                ) : item?.status === 'confirmed' ? (
-                                                    <p>Đã xác nhận</p>
-                                                ) : item?.status === 'shipping' ? (
-                                                    <p>Đang vận chuyển</p>
-                                                ) : item?.status === 'cancelled' ? (
-                                                    <p>Đã hủy</p>
-                                                ) : (
-                                                    <p>Giao hàng thành công</p>
-                                                )}
-                                            </div>
-
-                                            <div className='text-text-des mt-4 flex items-center justify-between text-sm font-medium'>
-                                                <p className='text-[18px]'>Thanh toán</p>
-                                                <p>
-                                                    {item?.isPaid
-                                                        ? ' Đã thanh toán'
-                                                        : 'Thanh toán khi nhận hàng'}
-                                                </p>
-                                            </div>
-
-                                            <div className='text-text-des mt-4 flex items-center justify-between text-sm font-medium'>
-                                                <p className='text-[18px]'>Tổng tiền</p>
-                                                <p>
-                                                    {useFormatNumber(item?.totalOrderPrice)}{' '}
-                                                    <span className='underline'>đ</span>
-                                                </p>
-                                            </div>
-
-                                            <div className='mt-6 flex justify-end gap-4 text-[18px] uppercase'>
-                                                {item?.status === 'cancelled' ? (
-                                                    <div className='border-text-title min-w-[100px] cursor-pointer border border-solid px-2 py-3 text-center font-semibold transition-all hover:bg-black hover:text-white'>
-                                                        Mua lại
-                                                    </div>
-                                                ) : (
-                                                    <div
-                                                        onClick={() =>
-                                                            handleCancelledOrder(item._id)
-                                                        }
-                                                        className='border-text-title cursor-pointer border border-solid px-2 py-3 text-center font-semibold transition-all hover:bg-black hover:text-white'
-                                                    >
-                                                        Hủy đơn hàng
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                    <div className='border-t border-solid border-[#ebebeb]'>
+                        <div ref={containerRef} className='mt-4 h-[400px] w-full overflow-y-auto'>
+                            <OrderItem data={allOrder} />
                         </div>
                     </div>
                 ) : (

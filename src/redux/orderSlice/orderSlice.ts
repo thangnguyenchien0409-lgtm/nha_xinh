@@ -31,8 +31,6 @@ export const fetchCreateOrder = createAsyncThunk<any, BodyFetchOrderType, { reje
     async ({ cartId, data }, { rejectWithValue }) => {
         try {
             const res = await createOrderApi(cartId!, data!);
-            console.log(res.data);
-
             toast.success('Đặt hàng thành công');
             return res.data;
         } catch (error: any) {
@@ -52,7 +50,6 @@ export const fetchCreateCheckoutSession = createAsyncThunk<
     try {
         const res = await createCheckoutSessionApi(cartId!, data!);
         // stripe listen --forward-to localhost:3333/api/v1/webhook-checkout
-
         return { session: res.data.session };
     } catch (error: any) {
         console.error('Checkout session error:', error);
@@ -152,14 +149,17 @@ const orderSlice = createSlice({
             // cancel order
             .addCase(fetchCancelledOrder.pending, (state) => {
                 state.status = 'loading';
+                state.loading = true;
             })
             .addCase(fetchCancelledOrder.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.order = action.payload.order;
                 state.isStatusOrder = true;
+                state.loading = false;
             })
             .addCase(fetchCancelledOrder.rejected, (state) => {
                 state.status = 'error';
+                state.loading = false;
             })
 
             // update status order
