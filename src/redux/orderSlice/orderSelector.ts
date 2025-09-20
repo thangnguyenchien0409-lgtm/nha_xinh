@@ -7,7 +7,12 @@ export const searchOrderByStatus = (state: RootState) => state.order.searchStatu
 export const orderFilter = createSelector(
     [allOrder, searchOrderByStatus],
     (listOrder, searchStatus) => {
-        if (!searchStatus) return listOrder;
+        if (!searchStatus || searchStatus === 'all') {
+            return {
+                ...listOrder,
+                orders: listOrder.orders
+            };
+        }
 
         return {
             ...listOrder,
