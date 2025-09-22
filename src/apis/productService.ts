@@ -44,21 +44,13 @@ export const getReviewApi = async <T>(id: string) => {
 };
 
 // Thêm review cho 1 sản phẩm
-export const addReviewApi = async (productId: string, data: any) => {
-    return await axiosClient.post(`products/${productId}/reviews`, data, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+export const addReviewApi = async (productId: string, orderId: string, data: any) => {
+    return await axiosClient.post(`products/${productId}/orders/${orderId}/reviews`, data);
 };
 
 // Cập nhật review
 export const updateReviewApi = async (id: string, data: any) => {
-    return await axiosClient.put(`reviews/${id}`, data, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    return await axiosClient.put(`reviews/${id}`, data);
 };
 
 // Xoá review

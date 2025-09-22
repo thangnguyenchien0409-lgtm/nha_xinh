@@ -11,6 +11,7 @@ import InfoProduct from '@/pages/UserPage/page/ProductDetailPage/InfoProduct';
 import ProductHomePage from '@/components/Product/ProductHomePage';
 import BannerRoom from '@/components/Banner/BannerHomePage/BannerRoom/BannerRoom';
 import { dataImgProduct } from '@/pages/UserPage/page/ProductPage/data';
+import Review from '@/components/Review/Review';
 
 function ProductDetailPage() {
     const { id } = useParams();
@@ -56,6 +57,7 @@ function ProductDetailPage() {
                         <InfoProduct data={productDetail} />
                     </div>
                 </div>
+                {productDetail?.reviews.length > 0 && <Review data={productDetail} />}
                 <ProductHomePage />
             </MainLayout>
             <BannerRoom isBgWhite={true} data={dataImgProduct} />

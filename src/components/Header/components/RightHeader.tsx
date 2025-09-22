@@ -28,7 +28,6 @@ function RightHeader() {
     const isAuth = useAppSelector((state) => state.auth.isAuth);
     const user = useAppSelector((state) => state.auth.user);
     let cart = useAppSelector((state) => state.cart.cart) || [];
-
     const quantityCart = useMemo(() => {
         return cart.reduce((quantity: number, item: any) => {
             return (quantity += item.quantity);
@@ -50,7 +49,7 @@ function RightHeader() {
     };
 
     useEffect(() => {
-        if (isAuth) {
+        if (isAuth && cart.length > 0) {
             dispatch(fetchGetAllCart());
         }
     }, [dispatch, isAuth]);

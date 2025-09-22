@@ -24,6 +24,7 @@ function ViewedProduct({ onClick }: ViewedProductType) {
                                 title={item.title}
                                 price={item.price}
                                 onClick={() => onClick(item)}
+                                ratingsAverage={item.ratingsAverage}
                             />
                         </div>
                     ))}

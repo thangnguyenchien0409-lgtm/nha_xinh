@@ -1,17 +1,19 @@
-import { Button } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { FaStar } from 'react-icons/fa';
 import { FaRegStar } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useAppDispatch } from '@/hooks/reduxHook';
+import { fetchReviewProduct } from '@/redux/reviewSlice/reviewSlice';
 
 type ReviewOrderType = {
     isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsOpen: React.Dispatch<React.SetStateAction<string | null>>;
+    orderId: string;
+    productData: any;
 };
 
 type ReviewFormValues = {
@@ -24,7 +26,9 @@ const schema = yup.object().shape({
     ratings: yup.number().min(1, 'Vui lòng chọn số sao').required()
 });
 
-function ReviewOrder({ isOpen, setIsOpen }: ReviewOrderType) {
+function ReviewOrder({ isOpen, setIsOpen, orderId, productData }: ReviewOrderType) {
+    const dispatch = useAppDispatch();
+
     const {
         control,
         handleSubmit,
@@ -36,13 +40,19 @@ function ReviewOrder({ isOpen, setIsOpen }: ReviewOrderType) {
     });
 
     const onSubmit = (data: ReviewFormValues) => {
-        console.log('Review data:', data);
         // Gọi API: addReviewApi(productId, data)
-        // setIsOpen(false);
+        dispatch(
+            fetchReviewProduct({
+                productId: productData.productId._id,
+                orderId: orderId,
+                data: data
+            })
+        );
+        setIsOpen(null);
     };
 
     const handleToggleReviewForm = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(null);
     };
 
     return (
@@ -66,6 +76,7 @@ function ReviewOrder({ isOpen, setIsOpen }: ReviewOrderType) {
                         action=''
                     >
                         <p className='text-center text-[22px] font-medium'>Đánh giá sản phẩm</p>
+                        <p>{productData.productId.title}</p>
                         <Controller
                             control={control}
                             name='ratings'

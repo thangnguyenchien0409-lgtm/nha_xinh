@@ -6,7 +6,11 @@ import { ActiveContext } from '@/context/ActiveContext';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import debounce from 'lodash.debounce';
-import { fetchGetAllProductNoLimit, searchProductByText } from '@/redux/productSlice/productSlice';
+import {
+    fetchGetAllProductNoLimit,
+    fetchProductById,
+    searchProductByText
+} from '@/redux/productSlice/productSlice';
 import { getProductSearch } from '@/redux/productSlice/productSelector';
 
 function InputSearch() {
@@ -14,7 +18,7 @@ function InputSearch() {
 
     const { setIsActiveNav } = useContext(ActiveContext)!;
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
     const productList = useAppSelector(getProductSearch);
@@ -37,14 +41,14 @@ function InputSearch() {
         setValue('');
     };
 
-    // const handleNavigateDetailProduct = (slug, id) => {
-    //     console.log('Thành công');
+    const handleNavigateDetailProduct = (slug: string, id: string) => {
+        console.log('Thành công');
 
-    //     navigate(`/${slug}/${id}`);
-    //     dispatch(fetchProductById(id));
-    //     setIsActiveNav(null);
-    //     setValue('');
-    // };
+        navigate(`/${slug}/${id}`);
+        dispatch(fetchProductById(id));
+        setIsActiveNav(null);
+        setValue('');
+    };
 
     useEffect(() => {
         if (value !== '') {
@@ -74,7 +78,7 @@ function InputSearch() {
                     {productList.length > 0 ? (
                         productList.map((item) => (
                             <div
-                                // onClick={() => handleNavigateDetailProduct(item.slug, item._id)}
+                                onClick={() => handleNavigateDetailProduct(item.slug, item._id)}
                                 key={item._id}
                                 className='flex cursor-pointer items-center justify-between gap-2 overflow-hidden border-b border-solid border-[#ebebeb] px-2 py-2 last:border-transparent hover:bg-gray-100'
                             >

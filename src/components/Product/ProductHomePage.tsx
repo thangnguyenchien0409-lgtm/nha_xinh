@@ -72,6 +72,7 @@ function ProductHomePage() {
                             price={item.price}
                             onClick={() => handleClickProductItem(item)}
                             quantity={item.quantity}
+                            ratingsAverage={item.ratingsAverage}
                         />
                     </div>
                 ))}
