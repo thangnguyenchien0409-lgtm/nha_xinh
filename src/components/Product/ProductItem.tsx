@@ -1,3 +1,6 @@
+import { FaStar } from 'react-icons/fa';
+import { FaStarHalf, FaRegStar } from 'react-icons/fa';
+
 import { ActiveContext } from '@/context/ActiveContext';
 import { ModalContext } from '@/context/ModalContext';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
@@ -16,6 +19,7 @@ type ProductItemType = {
     image: string;
     title: string;
     price: number;
+    ratingsAverage: number;
     quantity?: number;
     onClick: React.MouseEventHandler<HTMLDivElement>;
 };
@@ -27,6 +31,7 @@ function ProductItem({
     image,
     title,
     price,
+    ratingsAverage,
     onClick,
     quantity
 }: ProductItemType) {
@@ -39,6 +44,17 @@ function ProductItem({
     const isAuth = useAppSelector((state) => state.auth.isAuth);
 
     const navigate = useNavigate();
+
+    const renderStars = (rating: number, size: number = 24) => {
+        return [...Array(5)].map((_, i) => {
+            const starValue = i + 1;
+            if (rating >= starValue)
+                return <FaStar key={i} size={size} className='text-yellow-400' />;
+            if (rating >= starValue - 0.5)
+                return <FaStarHalf key={i} size={size} className='text-yellow-400' />;
+            return <FaRegStar key={i} size={size} className='text-yellow-400' />;
+        });
+    };
 
     const handleAddToCart = (id: string) => {
         if (isAuth) {
@@ -87,7 +103,14 @@ function ProductItem({
                 <h3 className='text-text-des my-3 flex-1 truncate text-sm font-medium'>{title}</h3>
                 <FaRegHeart size={20} className='cursor-pointer' />
             </div>
-            <div className='flex justify-end text-sm font-normal text-[#111]'>
+            <div
+                className={`flex text-sm font-normal text-[#111] ${
+                    ratingsAverage ? 'justify-between' : 'justify-end'
+                }`}
+            >
+                {ratingsAverage && (
+                    <div className='flex gap-2'>{renderStars(ratingsAverage, 18)}</div>
+                )}
                 <p>
                     {useFormatNumber(price)}
                     <span className='underline'>đ</span>

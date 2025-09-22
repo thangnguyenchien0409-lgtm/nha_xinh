@@ -19,7 +19,6 @@ function OrderDetailPage() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const allOrder = useAppSelector(orderFilter);
-    console.log(allOrder);
     const isStatusOrder = useAppSelector((state) => state.order.isStatusOrder);
 
     const productOrder: any[] = allOrder?.orders || [];
@@ -72,7 +71,10 @@ function OrderDetailPage() {
                 </div>
                 {productOrder.length > 0 ? (
                     <div className='border-t border-solid border-[#ebebeb]'>
-                        <div ref={containerRef} className='mt-4 h-[400px] w-full overflow-y-auto'>
+                        <div
+                            ref={containerRef}
+                            className='mt-4 h-[400px] w-full overflow-y-auto py-4'
+                        >
                             <OrderItem data={allOrder} />
                         </div>
                     </div>

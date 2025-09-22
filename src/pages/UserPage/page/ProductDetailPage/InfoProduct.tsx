@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import { fetchAddtoCart } from '@/redux/cartSlice/cartSlice';
 
 function InfoProduct({ data }: { data: any }) {
+    console.log(data);
     const [type, setType] = useState<string>('describe');
     const [quantityToCart, setQuantityTocart] = useState(1);
     const [errorQuantity, setErrorQuantity] = useState('');
@@ -112,6 +113,13 @@ function InfoProduct({ data }: { data: any }) {
                     </div>
                 </div>
 
+                {data?.sold > 0 && (
+                    <div className='flex items-center gap-4'>
+                        <p className='min-w-[100px] text-[18px] font-semibold'>Đã bán</p>
+                        <div className='px-2 py-1'>{data.sold}</div>
+                    </div>
+                )}
+
                 <div className='flex items-center gap-4'>
                     <p className='min-w-[100px] text-[18px] font-semibold'>Số lượng trong kho</p>
                     <div className=''>{data.quantity}</div>
@@ -179,7 +187,7 @@ function InfoProduct({ data }: { data: any }) {
                                 </div>
                             </div>
                         ))}
-                        <p className='font-bold'>
+                        <p className='font-semibold'>
                             TUY NHIÊN NHÀ XINH KHÔNG BẢO HÀNH CHO CÁC TRƯỜNG HỢP SAU:
                         </p>
                         {dataGuaranteeInValid.map((item, index) => (
@@ -206,7 +214,9 @@ function InfoProduct({ data }: { data: any }) {
                     </div>
                 )}
 
-                {type === 'describe' && <div>{data.description}</div>}
+                {type === 'describe' && (
+                    <div className='text-text-des leading-6 font-normal'>{data.description}</div>
+                )}
             </div>
         </div>
     );
