@@ -6,7 +6,7 @@ import Img from '@assets/img/logo-footer.png';
 
 function Footer() {
     return (
-        <div className='font-roboto w-full bg-[#303036] px-4 text-white lg:px-0'>
+        <div className='font-roboto mt-4 w-full bg-[#303036] px-4 text-white lg:px-0'>
             <div className='mt-0 xl:px-0'>
                 <div className='mx-auto w-full md:w-3xl lg:w-7xl'>
                     <div className='grid grid-cols-2 gap-7 py-10 md:grid-cols-4'>

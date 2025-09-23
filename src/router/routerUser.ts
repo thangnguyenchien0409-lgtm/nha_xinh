@@ -9,6 +9,16 @@ const CartPage = lazy(() => import('@pages/UserPage/page/CartPage/CartPage'));
 const OrderPage = lazy(() => import('@pages/UserPage/page/OrderPage/OrderPage'));
 const OrderSuccessStripe = lazy(() => import('@pages/UserPage/page/OrderPage/OrderSuccessStripe'));
 const OrderDetailPage = lazy(() => import('@pages/UserPage/page/OrderDetailPage/OrderDetailPage'));
+const RoomPage = lazy(() => import('@pages/UserPage/page/RoomPage/RoomPage'));
+const LocationPage = lazy(() => import('@pages/UserPage/page/LocationPage/LocationPage'));
+const CollectionPage = lazy(() => import('@pages/UserPage/page/CollectionPage/CollectionPage'));
+const CollectionDetailPage = lazy(
+    () => import('@pages/UserPage/page/CollectionDetailPage/CollectionDetailPage')
+);
+const InspirePage = lazy(() => import('@pages/UserPage/page/InspirePage/InspirePage'));
+const InspireDetailPage = lazy(
+    () => import('@pages/UserPage/page/InspireDetailPage/InspireDetailPage')
+);
 
 const routerUser = [
     {
@@ -38,6 +48,30 @@ const routerUser = [
     {
         path: '/order-detail',
         element: OrderDetailPage
+    },
+    {
+        path: '/room',
+        element: RoomPage
+    },
+    {
+        path: '/location',
+        element: LocationPage
+    },
+    {
+        path: '/collection-page',
+        element: CollectionPage
+    },
+    {
+        path: '/collection-detail/:id',
+        element: CollectionDetailPage
+    },
+    {
+        path: '/inspire-page',
+        element: InspirePage
+    },
+    {
+        path: '/inspire-detail/:id',
+        element: InspireDetailPage
     }
 ];
 

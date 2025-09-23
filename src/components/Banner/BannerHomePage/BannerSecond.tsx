@@ -1,4 +1,4 @@
-import Banner from '@assets/img/trinh-chieu-TV-3.gif';
+import Banner from '@assets/img/banner-birthday.png';
 
 function BannerSecond() {
     return (

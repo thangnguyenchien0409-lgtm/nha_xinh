@@ -11,7 +11,7 @@ import {
     fetchProductById,
     searchProductByText
 } from '@/redux/productSlice/productSlice';
-import { getProductSearch } from '@/redux/productSlice/productSelector';
+import { getProduct } from '@/redux/productSlice/productSelector';
 
 function InputSearch() {
     const [value, setValue] = useState<string>('');
@@ -21,7 +21,7 @@ function InputSearch() {
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
-    const productList = useAppSelector(getProductSearch);
+    const productList = useAppSelector(getProduct);
 
     const handleSearch = (text: string) => {
         if (text.trim() !== '') {
