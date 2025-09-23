@@ -40,7 +40,12 @@
                     ]
                 }
             ],
-            "roomId": ["1", "2"]
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
         },
         {
             "id": "2",
@@ -82,7 +87,20 @@
                     ]
                 }
             ],
-            "roomId": ["1", "2", "3", "4"]
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                },
+                {
+                    "_id": "68a484b7e0b255596f191d7c",
+                    "name": "Phòng ngủ"
+                },
+                {
+                    "_id": "68a484bce0b255596f191d7f",
+                    "name": "Phòng làm việc"
+                }
+            ]
         },
         {
             "id": "3",
@@ -124,7 +142,12 @@
                     ]
                 }
             ],
-            "roomId": ["1", "2"]
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
         },
         {
             "id": "4",
@@ -166,7 +189,16 @@
                     ]
                 }
             ],
-            "roomId": ["3", "4"]
+            "room": [
+                {
+                    "_id": "68a484b7e0b255596f191d7c",
+                    "name": "Phòng ngủ"
+                },
+                {
+                    "_id": "68a484bce0b255596f191d7f",
+                    "name": "Phòng làm việc"
+                }
+            ]
         },
         {
             "id": "5",
@@ -197,7 +229,12 @@
                     ]
                 }
             ],
-            "roomId": ["3"]
+            "room": [
+                {
+                    "_id": "68a484b7e0b255596f191d7c",
+                    "name": "Phòng ngủ"
+                }
+            ]
         },
         {
             "id": "6",
@@ -239,7 +276,12 @@
                     ]
                 }
             ],
-            "roomId": ["2"]
+            "room": [
+                {
+                    "_id": "68a484b6e0b255596f191d79",
+                    "name": "Phòng ăn"
+                }
+            ]
         },
         {
             "id": "7",
@@ -270,7 +312,414 @@
                     ]
                 }
             ],
-            "roomId": ["1", "3", "4"]
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                },
+                {
+                    "_id": "68a484b7e0b255596f191d7c",
+                    "name": "Phòng ngủ"
+                },
+                {
+                    "_id": "68a484bce0b255596f191d7f",
+                    "name": "Phòng làm việc"
+                }
+            ]
+        },
+        {
+            "id": "8",
+            "title": "Napoli Thiết kế tinh tế cho không gian ăn uống ấm cúng và sang trọng",
+            "description": "Bữa cơm gia đình luôn là khoảnh khắc sum vầy và lan tỏa yêu thương. Với bộ bàn ăn Napoli, không gian phòng ăn của bạn được chăm chút từng chi tiết từ chất liệu đến thiết kế tỉ mỉ mang đến trải nghiệm ăn uống hiện đại, đầy tinh tế.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2025/08/ban-an-napoli-2048x2048.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Ghế ăn Napoli",
+                    "description": "Lớp bọc da sang trọng, đệm ngồi êm ái, tựa thoải mái cho tư thế ngồi thư giãn.Cảm giác nâng niu khi đặt lên ghế, tựa lưng và chỗ ngồi được thiết kế để tối ưu sự thoải mái.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2025/08/napoli-3-2048x2048.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Bàn ăn Napoli",
+                    "description": "Chất liệu: Gỗ Sồi và MDF Veneer sồi, đảm bảo sự bền bỉ và vẻ đẹp tự nhiên.Kích thước: D2300 – R1050 – C750 mm (dài x rộng x cao) phù hợp với nhiều không gian phòng ăn.Phối hợp hài hòa giữa gỗ tự nhiên và lớp veneer, mang lại vẻ ngoài ấm cúng mà hiện đại.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/11/Ban-an-8-cho-Napoli-04.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a484b6e0b255596f191d79",
+                    "name": "Phòng ăn"
+                }
+            ]
+        },
+        {
+            "id": "9",
+            "title": "Phòng ăn hiện đại, nổi bật với thiết kế độc đáo từ bàn ăn Moretti",
+            "description": "Phòng ăn hiện đại, mới mẻ sẽ mang lại nhiều cảm xúc và nguồn năng lượng mới cho mỗi bữa ăn. Cùng chiêm ngưỡng vẻ đẹp từ bộ bàn ăn độc đáo trong Bộ sưu tập Moretti.",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/11/phong-an-hien-dai-moretti.jpg",
+            "subInspire": [
+                {
+                    "id": "1",
+                    "title": "Bề mặt bằng đá sang trọng",
+                    "description": "Bàn ăn Moretti với bề mặt được làm bằng đá tự nhiên, được thi công cẩn thận, tỉ mỉ. Các đường vân đá tự nhiên là điểm đặc sắc, gây ấn tượng cho thiết kế bàn ăn này.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/11/phong-an-hien-dai-moretti-1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "title": "Sự kết hợp dộc đáo",
+                    "description": "Sự kết hợp hoàn hảo giữa kim loại sơn hiệu ứng cùng kiểu dáng chân bàn được thiết kế độc đáo, mang đến không gian phòng ăn hiện đại, sang trọng. Điểm tô chút sắc màu tự nhiên cho không gian thêm sức sống với bình hoa được đặt trên bàn hoặc góc nhỏ trên kệ tủ. Ngoài ra, chiếc tủ trưng bày hoặc tủ trang trí sẽ giúp phòng ăn trong bắt mắt và gọn gàng hơn, gia tăng khu vực chứa đồ cho trong nhà.",
+                    "images": [
+                        {
+                            "id": "1",
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/11/phong-an-hien-dai-moretti-4.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a484b6e0b255596f191d79",
+                    "name": "Phòng ăn"
+                }
+            ]
+        }
+    ],
+    "collection": [
+        {
+            "id": "1",
+            "name": "Orientale",
+            "title": "Câu chuyện của những sự khởi đầu",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/08/BST-Orientale-1199x800.jpg",
+            "description": " một cái tên đầy ý nghĩa với mong muốn tạo ra những kết nối từ khắp nơi trên thế giới, để cùng nhau dệt nên câu chuyện mới đầy cảm hứng và diệu kỳ.",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Chất liệu cao cấp tạo trải nghiệm đẳng cấp",
+                    "description": "Được làm từ gỗ walnut tự nhiên – loại gỗ cao cấp không chỉ nổi tiếng với sắc nâu trầm tinh tế, những đường vân uốn lượn mềm mại mà còn có độ bền cao, mang lại sự vững chắc. Kết hợp cùng da thật, chất liệu ngày càng trở nên mềm mại và ấm áp theo thời gian, tạo nên những món nội thất vừa sang trọng, vừa ấm áp, mang đến trải nghiệm tuyệt vời cho người dùng.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/08/BST-Orientale2.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/08/BST-orientale-11.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Thiết kế tinh tế, tôn vinh vẻ đẹp tự nhiên",
+                    "description": "Mỗi sản phẩm trong bộ sưu tập Orientale không chỉ mang dáng hình hiện đại, mà còn phảng phất nét đẹp của truyền thống phương Đông. Thiết kế của Orientale được chú trọng vào công năng và chất lượng vượt trội. Những đường nét tinh tế, sự kết hợp giữa gỗ walnut bền bỉ và da tự nhiên cao cấp, tạo nên một không gian sống vừa thanh lịch, vừa ấm áp. Đây là nơi mà sự giản dị và sang trọng, truyền thống và đổi mới, giao thoa và hòa quyện một cách hoàn hảo.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/08/BST-orientale-3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Lối sống an yên, cân bằng",
+                    "description": "Với Orientale, Nhà Xinh mong muốn mang đến cho bạn một lối sống an yên, nơi mà mỗi sản phẩm đều là kết tinh của sự tử tế và chân thành. Từ chiếc ghế sofa êm ái đến chiếc bàn nước chắc chắn, tất cả đều được thiết kế để kết nối con người với nhau, để mang lại những khoảnh khắc bình yên và hạnh phúc.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/08/BST-orientale-12-1.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Valente",
+            "title": "Tinh hoa của sự trang trọng và tinh tế",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/07/armchair-valente-da.jpg",
+            "description": "Hành trình chìm đắm vào thế giới của sự tinh tế và sang trọng. Valente được thiết kế với tỉ lệ hoàn hảo và sự trau chuốt trong từng chi tiết, mang đến một trải nghiệm nội thất đẳng cấp và khác biệt.",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Bộ sưu tập Valente với thiết kế tinh xảo và trau chuốt trong từng đường nét",
+                    "description": "Bộ sưu tập Valente mang đến không gian sống sự hòa quyện hoàn hảo giữa gam màu trầm của gỗ và vải, tạo nên cảm giác mạnh mẽ và hài hòa. Chân kim loại cao cấp màu vàng không chỉ làm tăng thêm vẻ đẹp sang trọng và quý phái, mà còn đảm bảo độ bền và sự chắc chắn cho sản phẩm. Mặt bàn sử dụng đá tự nhiên tinh tế, toát lên vẻ đẳng cấp. Mỗi thiết kế trong bộ sưu tập Valente đều được cân đối hoàn hảo, giúp sản phẩm dễ dàng phù hợp với mọi phong cách trang trí nội thất, từ cổ điển đến hiện đại.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/armchair-valente-da.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/tu-trang-tri-valente-4-e1721639238230.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Sự đa dạng và độc đáo trong Bộ sưu tập Valente",
+                    "description": "Bộ sưu tập Valente mang đến đa dạng các sản phẩm như tủ tivi, sofa, tủ trưng bày, armchair, bàn ăn, ghế ăn,…. Từng thiết kế trong BST Valente đều mang những nét đặc trưng riêng, tất cả đều được trau chuốt tỉ mỉ để giúp bạn tạo nên một không gian sống hoàn hảo và đầy đủ tiện nghi. Valente không chỉ mang đến cho bạn những món đồ nội thất cao cấp mà còn mang đến một không gian sống cao cấp, nơi bạn có thể tận hưởng cuộc sống một cách trọn vẹn nhất.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-valente-1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Tạo dựng không gian đẳng cấp với bộ sưu tập Valente",
+                    "description": "Hãy để bộ sưu tập Valente trở thành biểu tượng của lối sống sang trọng và tinh tế trong ngôi nhà của bạn. Với thiết kế đẳng cấp và sự kết hợp hài hòa giữa các chất liệu cao cấp, Valente chắc chắn sẽ mang lại cho bạn một không gian sống tuyệt vời, nơi bạn có thể thư giãn và tận hưởng những khoảnh khắc quý giá.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-valente-6.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Mây mới",
+            "title": "Vẻ đẹp dịu êm trong từng đường nét",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/07/ghe-dai-may-moi-3-601x400.jpg",
+            "description": " Bức tranh nội thất luôn chứa đựng muôn vàn câu chuyện, mỗi thiết kế đều mang theo hơi thở riêng, thổi hồn vào từng góc nhỏ trong ngôi nhà. Với mong muốn mang đến cho khách hàng trải nghiệm không gian sống mới mẻ và thư thái, Nhà Xinh giới thiệu Bộ sưu tập Mây – lấy cảm hứng từ vẻ đẹp mộc mạc, bình dị của hồn quê Việt Nam.",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Mây – Tận hưởng lối sống thanh bình, tinh tế",
+                    "description": "Khi nhắc đến Mây, ta cảm nhận ngay vẻ đẹp mềm mại và sự gần gũi với thiên nhiên. Bộ sưu tập Mây mới của Nhà Xinh là biểu tượng của Việt Nam đương đại, thể hiện lối sống thanh bình và niềm trân trọng những giá trị truyền thống.Sử dụng chất liệu mây tự nhiên kết hợp với những đường nét tinh tế, mỗi sản phẩm trong bộ sưu tập được chăm chút tỉ mỉ từ những sợi mây đan khéo léo, mang đến cảm giác mềm mại, trang nhã và vô cùng thân thuộc",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-may-2.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-may-3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Vẻ đẹp tinh tế từ chất liệu Mây",
+                    "description": "Mỗi đường cong mềm mại của mây đan như đưa ta về với miền quê thanh bình, nơi ta có thể thả mình vào những làn gió mát lành và tiếng chim hót líu lo. Sự kết hợp khéo léo giữa màu sắc và chất liệu không chỉ tạo nên một tổng thể hài hòa, mà còn nêu bật được phong cách riêng biệt, đậm chất thiên nhiên tạo nên một không gian thư giãn và an yên sau những giờ làm việc căng thẳng.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-may-5.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Sự kết hợp hoàn hảo giữa thẩm mỹ và công năng",
+                    "description": "Chất liệu mây tự nhiên được khéo léo biến tấu thành những đường cong mềm mại, uyển chuyển, mang đến cảm giác thoải mái và dễ chịu cho người sử dụng. Viền vân gỗ được kết hợp hài hòa, tạo điểm nhấn hiện đại. BST Mây mới mang đến cho bạn nhiều lựa chọn đa dạng cho không gian sống của mình. Từ bộ sofa êm ái, chiếc armchair thanh lịch đến bàn ăn tinh tế, tất cả đều góp phần tạo nên một không gian sống ấm cúng, nhẹ nhàng và đầy cảm hứng.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/lifestyle-may-moi.webp"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Hà Nội",
+            "title": "Sự hòa quyện giữa cổ điển và hiện đại",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-ha-noi-768x623.jpg",
+            "description": "Mang đến hơi thở mới cho không gian với sự kết hợp hoàn mỹ giữa hiện đại và cổ điển. Mỗi món đồ trong bộ sưu tập này là một tác phẩm nghệ thuật, gợi lên vẻ đẹp thanh lịch, trang nhã của thủ đô ngàn năm văn hiến.",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Bộ sưu tập Hà Nội – Linh Hoạt Trong Từng Chi Tiết – Đậm đà phong vị Hà Thành",
+                    "description": "Bộ sưu tập “Hà Nội” được thiết kế với kích thước gọn gàng, tinh tế, phù hợp với mọi không gian sống, từ những căn hộ nhỏ xinh đến những ngôi nhà rộng lớn. Đặc biệt, bộ sưu tập này như được sinh ra để dành cho những tâm hồn trẻ trung, năng động, yêu thích sự mới mẻ nhưng vẫn trân quý những giá trị truyền thống. Sự linh hoạt trong thiết kế giúp bạn dễ dàng sắp đặt, tạo nên một không gian sống hài hòa, ấm cúng.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-ha-noi-1.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-ha-noi-2-1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Chất Liệu Cao Cấp – Vẻ đẹp vượt thời gian",
+                    "description": "Mỗi sản phẩm trong bộ sưu tập “Hà Nội” được tạo ra từ những vật liệu vải cao cấp, mềm mại nhưng bền bỉ, kết hợp với khung sườn gỗ beech chắc chắn, mang lại sự vững chãi và thoải mái. Phần lưng sau của ghế sofa được thiết kế đặc biệt để ngăn ngừa ẩm mốc trong những mùa nồm ẩm, đảm bảo sự bền đẹp theo thời gian. Thiết kế mềm mại, với mặt bàn tích hợp ngăn chứa điều khiển tivi và các vật dụng nhỏ, giúp cho không gian sống luôn gọn gàng, ngăn nắp.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-ha-noi-3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Tiện Ích Tối Đa, Vẻ Đẹp thanh lịch",
+                    "description": "Mỗi sản phẩm trong bộ sưu tập “Hà Nội” được tạo ra từ những vật liệu vải cao cấp, mềm mại nhưng bền bỉ, kết hợp với khung sườn gỗ beech chắc chắn, mang lại sự vững chãi và thoải mái. Phần lưng sau của ghế sofa được thiết kế đặc biệt để ngăn ngừa ẩm mốc trong những mùa nồm ẩm, đảm bảo sự bền đẹp theo thời gian. Thiết kế mềm mại, với mặt bàn tích hợp ngăn chứa điều khiển tivi và các vật dụng nhỏ, giúp cho không gian sống luôn gọn gàng, ngăn nắp.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-ha-noi-5.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                },
+                {
+                    "_id": "68a484b6e0b255596f191d79",
+                    "name": "Phòng ăn"
+                },
+                {
+                    "_id": "68a484b7e0b255596f191d7c",
+                    "name": "Phòng ngủ"
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Sài Gòn",
+            "title": "Vẻ Đẹp Hiện Đại, Tinh Tế",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-sai-gon.jpg",
+            "description": "mang đến làn gió mới, đậm chất trẻ trung và hiện đại, phản chiếu chân thực nhịp sống năng động của thành phố. Mỗi chi tiết đều được chăm chút tỉ mỉ, tạo nên sự tinh tế trong từng góc cạnh, dù là những không gian nhỏ hẹp cũng trở nên bừng sáng với “Sài Gòn.”",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Đẳng Cấp Từ Chất Liệu",
+                    "description": "Dành cho những tâm hồn trẻ trung và phóng khoáng, bộ sưu tập nội thất Sài Gòn sử dụng chất liệu vải cao cấp, mềm mại và thoải mái, kết hợp cùng chân kim loại sơn đen khỏe khoắn, tạo nên sự hòa quyện giữa nét đẹp hiện đại và độ bền vững chắc. Sự lựa chọn này không chỉ tôn lên vẻ đẹp sang trọng, mang lại cảm giác dễ chịu, mà còn rất phù hợp với lối sống năng động của người trẻ.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-sai-gon-2.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-sai-gon-3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Thiết Kế Linh Hoạt Và Tiện Dụng",
+                    "description": "Một điểm nhấn đặc biệt của bộ sưu tập nội thất “Sài Gòn” chính là thiết kế linh hoạt với hệ bàn 2 tầng. Điều này không chỉ giúp tăng diện tích chứa đồ mà còn tạo nên sự tiện dụng vượt trội, đáp ứng mọi nhu cầu sinh hoạt. Hệ bàn 2 tầng cung cấp thêm không gian lưu trữ, giúp dễ dàng sắp xếp và giữ gọn gàng không gian sống, đồng thời giữ được vẻ đẹp thẩm mỹ.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-sai-gon-4.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Chi Phí Phù Hợp Với Người Trẻ",
+                    "description": "Một điểm cộng lớn của bộ sưu tập “Sài Gòn” chính là mức chi phí vô cùng hợp lý, phù hợp với ngân sách của những người trẻ. Giấc mơ sở hữu một không gian sống hiện đại và phong cách không còn xa vời với bộ sưu tập Sài Gòn từ Nhà Xinh. Với “Sài Gòn,” bạn không cần phải đánh đổi giữa chi phí và phong cách – tất cả đều được dung hòa để mang đến cho bạn sự hài lòng tối đa.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/07/bo-suu-tap-sai-gon-6.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
+        },
+        {
+            "id": "6",
+            "name": "Moretti",
+            "title": "Điểm nhấn thanh lịch, trẻ trung",
+            "image": "https://nhaxinh.com/wp-content/uploads/2024/05/bo-suu-tap-Morretti-3-768x512.jpg",
+            "description": "nổi bật bởi những đường nét nhẹ nhàng kết hợp với tỷ lệ độc đáo, dễ dàng mang đến điểm nhấn mới mẻ cho không gian sống. Moretti đạt được sự hòa quyện hài hòa giữa những đường nét thanh lịch, đi kèm với tinh thần trẻ trung, sáng tạo cả về tỷ lệ lẫn chi tiết thiết kế. Mỗi món đồ trong bộ sưu tập Moretti không chỉ là sản phẩm nội thất mà còn là một tác phẩm nghệ thuật, được tạo ra từ sự tận tâm và đam mê của các nhà thiết kế. Khung sắt màu đồng, với vẻ đẹp lịch lãm và sang trọng, kết hợp cùng những chiếc chân bàn chế tác tinh xảo, tạo ra một không gian đẳng cấp đầy mê hoặc.",
+            "subcollection": [
+                {
+                    "id": 1,
+                    "title": "Nét thanh lịch và tỷ lệ hoàn chỉnh",
+                    "description": "Bộ sưu tập Moretti nổi bật bởi những đường nét nhẹ nhàng kết hợp với tỷ lệ độc đáo, dễ dàng mang đến điểm nhấn mới mẻ cho không gian sống. Moretti đạt được sự hòa quyện hài hòa giữa những đường nét thanh lịch, đi kèm với tinh thần trẻ trung, sáng tạo cả về tỷ lệ lẫn chi tiết thiết kế. Mỗi món đồ trong bộ sưu tập Moretti không chỉ là sản phẩm nội thất mà còn là một tác phẩm nghệ thuật, được tạo ra từ sự tận tâm và đam mê của các nhà thiết kế. Khung sắt màu đồng, với vẻ đẹp lịch lãm và sang trọng, kết hợp cùng những chiếc chân bàn chế tác tinh xảo, tạo ra một không gian đẳng cấp đầy mê hoặc.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/bo-suu-tap-Morretti.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/bo-suu-tap-Morretti-3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Sự hòa quyện giữa nghệ thuật và cuộc sống",
+                    "description": "Nó là sự kết hợp hoàn hảo giữa nét đẹp tinh tế, đường nét mềm mại và tỷ lệ hoàn chỉnh, tạo ra một không gian sống đẳng cấp và sang trọng. Ngoài vẻ đẹp ngoại hình, bộ sưu tập Moretti còn chú trọng vào công năng sử dụng của sản phẩm. Từng chi tiết được chăm chút kỹ lưỡng, từ việc thiết kế sao cho phù hợp với không gian hiện đại, trẻ trung đến đảm bảo sự thoải mái và tiện nghi nhằm tạo ra không gian sống sang trọng, đẳng cấp và mang lại trải nghiệm thư giãn thoải mái.Moretti mang đến trải nghiệm thư giãn tuyệt vời. Hãy để những đường nét thanh lịch và sự sáng tạo của Moretti làm mới lại không gian sống của bạn, tạo ra một không gian sống đẳng cấp và đầy phong cách.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/bo-suu-tap-Morretti-4.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Ấn tượng họa tiết nhuộm màu",
+                    "description": "Điểm đặc trưng của Moretti nằm ở phần họa tiết nhuộm màu bắt mắt trên các mẫu nội thất. Kỹ thuật này được sử dụng nhằm tô điểm cũng như tạo điểm nhấn cho những thiết kế. Bên cạnh đó, màu sắc cũng là một nét đặc trưng khác trong BST Moretti  với một loạt màu sắc nổi bật. Nếu chỉ có hai từ để miêu tả về BST Moretti  thì đó chính là “tuyệt vời”.",
+                    "images": [
+                        {
+                            "id": 1,
+                            "src": "https://nhaxinh.com/wp-content/uploads/2024/05/bo-suu-tap-Morretti-7.jpg"
+                        }
+                    ]
+                }
+            ],
+            "room": [
+                {
+                    "_id": "68a48484e0b255596f191d76",
+                    "name": "Phòng khách"
+                }
+            ]
         }
     ]
 }

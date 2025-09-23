@@ -158,20 +158,28 @@ const productSlice = createSlice({
         },
         searchProductByRoomId(state, action) {
             state.roomId = action.payload;
+        },
+        resetSearchProduct: (state) => {
+            state.subCategoryId = '';
+            state.searchText = '';
+            state.categoryId = '';
         }
     },
     extraReducers: (builder) => {
         // --- GET ALL ---
         builder.addCase(fetchGetAllProduct.pending, (state) => {
             state.status = 'loading';
+            state.loading = true;
         });
         builder.addCase(fetchGetAllProduct.fulfilled, (state, action) => {
             state.status = 'idle';
             state.product = action.payload.Document || [];
             state.totalPage = action.payload.paginationResult.numberOfPages;
+            state.loading = false;
         });
         builder.addCase(fetchGetAllProduct.rejected, (state) => {
             state.status = 'error';
+            state.loading = false;
         });
         builder.addCase(fetchGetAllProductNoLimit.pending, (state) => {
             state.status = 'loading';
@@ -253,7 +261,8 @@ export const {
     searchProductByText,
     searchProductByCategoryId,
     searchProductBySubCategoryId,
-    searchProductByRoomId
+    searchProductByRoomId,
+    resetSearchProduct
 } = productSlice.actions;
 
 export default productSlice;

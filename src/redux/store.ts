@@ -1,6 +1,8 @@
 import { authSlice } from '@/redux/authSlice';
 import cartSlice from '@/redux/cartSlice/cartSlice';
 import categorySlice from '@/redux/categorySlice/categorySlice';
+import collectionSlice from '@/redux/collectionSlice/collectionSlice';
+import inSpireSlice from '@/redux/inSpireSlice/inSpireSlice';
 import orderSlice from '@/redux/orderSlice/orderSlice';
 import productSlice from '@/redux/productSlice/productSlice';
 import reviewSlice from '@/redux/reviewSlice/reviewSlice';
@@ -17,7 +19,9 @@ const store: any = configureStore({
         category: categorySlice.reducer,
         subCategory: subCategorySlice.reducer,
         room: roomSlice.reducer,
-        review: reviewSlice.reducer
+        review: reviewSlice.reducer,
+        inspire: inSpireSlice.reducer,
+        collection: collectionSlice.reducer
     }
 });
 

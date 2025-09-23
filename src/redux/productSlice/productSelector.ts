@@ -11,8 +11,8 @@ export const searchProductBySubCategory = (state: RootState) => state.product.su
 export const searchProductByRoom = (state: RootState) => state.product.roomId;
 
 export const getProductFilter = createSelector(
-    [productList, searchSelectProduct, searchProductByMaterial],
-    (productList, filterSelectProduct, filterMaterialProduct) => {
+    [productList, searchSelectProduct, searchProductByMaterial, searchProductBySubCategory],
+    (productList, filterSelectProduct, filterMaterialProduct, subCategoryId) => {
         let list = [...(productList || [])];
 
         if (filterSelectProduct) {
@@ -42,6 +42,14 @@ export const getProductFilter = createSelector(
                 list = list.filter((item) => item.material.toLowerCase().includes('gốm'));
             }
         }
+
+        if (subCategoryId) {
+            list = list.filter((item) =>
+                item.subCategories?.some(
+                    (sc: any) => sc === subCategoryId || sc._id === subCategoryId
+                )
+            );
+        }
         return list;
     }
 );
@@ -49,12 +57,69 @@ export const getProductFilter = createSelector(
 export const getProductSearch = createSelector(
     [
         productListNoLimit,
-        searchProductByText,
         searchProductByCategory,
         searchProductBySubCategory,
-        searchProductByRoom
+        searchProductByRoom,
+        searchProductByMaterial,
+        searchSelectProduct
     ],
-    (productList, searchText, categoryId, subCategoryId, roomId) => {
+    (
+        productList,
+        categoryId,
+        subCategoryId,
+        roomId,
+        filterMaterialProduct,
+        filterSelectProduct
+    ) => {
+        let list: any[] = productList;
+
+        if (categoryId) {
+            list = list.filter((item) => item.category._id === categoryId);
+        }
+
+        if (subCategoryId) {
+            list = list.filter((item) =>
+                item.subCategories?.some(
+                    (sc: any) => sc === subCategoryId || sc._id === subCategoryId
+                )
+            );
+        }
+
+        if (roomId) {
+            list = list.filter((item) => item.brand._id === roomId);
+        }
+
+        if (filterSelectProduct === 'new') {
+            list = [...list]
+                .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+                .slice(0, 10);
+        } else if (filterSelectProduct === 'asc') {
+            list = [...list].sort((a, b) => a.price - b.price);
+        } else {
+            list = [...list].sort((a, b) => b.price - a.price);
+        }
+
+        if (filterMaterialProduct) {
+            if (filterMaterialProduct === 'stone') {
+                list = list.filter((item) => item.material.toLowerCase().includes('đá'));
+            } else if (filterMaterialProduct === 'wood') {
+                list = list.filter((item) => item.material.toLowerCase().includes('gỗ'));
+            } else if (filterMaterialProduct === 'metal') {
+                const metals: string[] = ['sắt', 'nhôm', 'kim loại', 'đồng', 'inox'];
+                list = list.filter((item) =>
+                    metals.some((m) => item.material.toLowerCase().includes(m))
+                );
+            } else {
+                list = list.filter((item) => item.material.toLowerCase().includes('gốm'));
+            }
+        }
+        return list;
+    }
+);
+
+export const getProduct = createSelector(
+    [productListNoLimit, searchProductByText],
+    (productList, searchText) => {
         let list: any[] = productList;
 
         function removeVietnameseTones(str: string) {
@@ -73,22 +138,6 @@ export const getProductSearch = createSelector(
 
                 return title.includes(text) || titleNoAccent.includes(textNoAccent);
             });
-        }
-
-        if (categoryId) {
-            list = list.filter((item) => item.category._id === categoryId);
-        }
-
-        if (subCategoryId) {
-            list = list.filter((item) =>
-                item.subCategories?.some(
-                    (sc: any) => sc === subCategoryId || sc._id === subCategoryId
-                )
-            );
-        }
-
-        if (roomId) {
-            list = list.filter((item) => item.brand._id === roomId);
         }
         return list;
     }

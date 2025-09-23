@@ -27,6 +27,7 @@
     --shadow-select-product: 0 4px 12px rgba(255, 0, 128, 0.2);
     --shadow-box: 0 4px 12px rgba(0, 0, 0, 0.25);
     --breakpoint-mobile-sm: max(390px);
+    --text-shadow-b: 2px 2px 4px rgba(0, 0, 0, 0.7);
 
     @keyframes slide-down {
         0% {

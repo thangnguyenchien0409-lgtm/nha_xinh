@@ -28,7 +28,7 @@ export const dataNav: NavItem[] = [
         type: 'products'
     },
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng',
         type: 'rooms'
     },
@@ -69,24 +69,24 @@ export const dataIcon: IconItem[] = [
 
 export const dataSubNav: SubNavType[] = [
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng khách',
-        type: ''
+        type: 'livingRoom'
     },
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng ăn',
-        type: ''
+        type: 'diningRoom'
     },
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng ngủ',
-        type: ''
+        type: 'bedRoom'
     },
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng làm việc',
-        type: ''
+        type: 'officeRoom'
     }
 ];
 

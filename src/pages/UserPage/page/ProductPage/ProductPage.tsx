@@ -1,6 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
-import { addViewedProduct, fetchGetAllProduct } from '@/redux/productSlice/productSlice';
+import {
+    addViewedProduct,
+    fetchGetAllProduct,
+    fetchGetAllProductNoLimit,
+    resetSearchProduct,
+    searchProductBySubCategoryId
+} from '@/redux/productSlice/productSlice';
 
 import BannerRoom from '@/components/Banner/BannerHomePage/BannerRoom/BannerRoom';
 import Footer from '@/components/Footer/Footer';
@@ -10,16 +16,26 @@ import { dataImgProduct } from '@/pages/UserPage/page/ProductPage/data';
 import ViewedProduct from '@/components/Product/ViewedProduct';
 import ProductItem from '@/components/Product/ProductItem';
 import Pagination from '@/components/Pagination/Pagination';
-import { getProductFilter } from '@/redux/productSlice/productSelector';
+import { getProductFilter, getProductSearch } from '@/redux/productSlice/productSelector';
 import FilterProduct from '@/pages/UserPage/page/ProductPage/FilterProduct';
+import { ActiveContext } from '@/context/ActiveContext';
+import Loading from '@/components/Loading/Loading';
 
 function ProductPage() {
+    const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(useAppSelector((state) => state.product.page));
     const totalPage = useAppSelector((state) => state.product.totalPage);
 
     const dispatch = useAppDispatch();
-    const product = useAppSelector(getProductFilter);
-    const status = useAppSelector((state) => state.product.status);
+
+    const { currentSubCate, setCurrentSubCate } = useContext(ActiveContext)!;
+
+    // const product = useAppSelector(getProductFilter);
+    const product = currentSubCate
+        ? useAppSelector(getProductSearch)
+        : useAppSelector(getProductFilter);
+    console.log(product);
+    console.log(currentSubCate);
 
     const handleClickProductItem = (item: any) => {
         dispatch(addViewedProduct(item));
@@ -50,8 +66,36 @@ function ProductPage() {
     };
 
     useEffect(() => {
-        dispatch(fetchGetAllProduct({ page: page, limit: 16 }));
-    }, [dispatch, page]);
+        const fetchData = async () => {
+            setLoading(true);
+
+            try {
+                if (currentSubCate) {
+                    dispatch(searchProductBySubCategoryId(currentSubCate._id));
+                    await dispatch(fetchGetAllProductNoLimit());
+                } else {
+                    await dispatch(fetchGetAllProduct({ page, limit: 16 }));
+                }
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+
+        return () => {
+            dispatch(resetSearchProduct());
+        };
+    }, [dispatch, page, currentSubCate]);
+
+    useEffect(() => {
+        if (currentSubCate) {
+            window.scrollTo({
+                top: 500,
+                behavior: 'smooth'
+            });
+        }
+    }, [currentSubCate]);
 
     useEffect(() => {}, [page]);
 
@@ -63,8 +107,8 @@ function ProductPage() {
                 <FilterProduct />
 
                 {/* Danh sách sản phẩm */}
-                {status === 'loading' ? (
-                    <p>Loading...</p>
+                {loading ? (
+                    <Loading />
                 ) : product.length > 0 ? (
                     <div className='mt-9 grid w-full grid-cols-2 place-items-center gap-5 lg:grid-cols-3 xl:grid-cols-4'>
                         {product.map((item: any) => (
@@ -88,7 +132,7 @@ function ProductPage() {
                         <p>Không tìm thấy dữ liệu</p>
                     </div>
                 )}
-                {product.length > 0 && totalPage > 0 && (
+                {product.length > 0 && totalPage > 0 && currentSubCate === null && (
                     <Pagination
                         totalPage={totalPage}
                         currentPage={page}

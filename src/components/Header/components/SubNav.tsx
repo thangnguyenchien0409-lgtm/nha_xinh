@@ -26,6 +26,7 @@ function SubNav({
     const handleNavigate = () => {
         navigate('/admin');
     };
+
     return (
         <div
             className={classNames(
@@ -70,10 +71,13 @@ function SubNav({
                 {data.map((item) => (
                     <li
                         key={item.name}
-                        className='hover:text-text-hover text-text-des cursor-pointer border-b border-solid border-[#e1e1e1] bg-white px-4 py-5 transition-all last:border-none'
-                        onClick={() => onClick?.(item)}
+                        className='hover:text-text-hover text-text-des w-full cursor-pointer border-b border-solid border-[#e1e1e1] bg-white px-4 py-5 transition-all last:border-none'
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClick?.(item);
+                        }}
                     >
-                        <div>{item.name}</div>
+                        {item.name}
                     </li>
                 ))}
             </ul>

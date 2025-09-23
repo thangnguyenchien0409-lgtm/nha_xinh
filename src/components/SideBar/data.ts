@@ -62,12 +62,12 @@ export const dataNavAdmin = [
 
 export const dataSideBar = [
     {
-        path: '/',
+        path: '/products-page',
         name: 'Sản phẩm',
         type: 'products'
     },
     {
-        path: '/',
+        path: '/room',
         name: 'Phòng',
         type: 'rooms'
     },
@@ -130,5 +130,28 @@ export const dataSideBarAdmin = [
         icon: HiUsers,
         name: 'User',
         type: 'user'
+    }
+];
+
+export const dataRoom = [
+    {
+        path: '/room',
+        name: 'Phòng khách',
+        type: 'livingRoom'
+    },
+    {
+        path: '/room',
+        name: 'Phòng ăn',
+        type: 'diningRoom'
+    },
+    {
+        path: '/room',
+        name: 'Phòng ngủ',
+        type: 'bedRoom'
+    },
+    {
+        path: '/room',
+        name: 'Phòng làm việc',
+        type: 'officeRoom'
     }
 ];

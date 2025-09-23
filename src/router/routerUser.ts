@@ -9,6 +9,8 @@ const CartPage = lazy(() => import('@pages/UserPage/page/CartPage/CartPage'));
 const OrderPage = lazy(() => import('@pages/UserPage/page/OrderPage/OrderPage'));
 const OrderSuccessStripe = lazy(() => import('@pages/UserPage/page/OrderPage/OrderSuccessStripe'));
 const OrderDetailPage = lazy(() => import('@pages/UserPage/page/OrderDetailPage/OrderDetailPage'));
+const RoomPage = lazy(() => import('@pages/UserPage/page/RoomPage/RoomPage'));
+const LocationPage = lazy(() => import('@pages/UserPage/page/LocationPage/LocationPage'));
 
 const routerUser = [
     {
@@ -38,6 +40,14 @@ const routerUser = [
     {
         path: '/order-detail',
         element: OrderDetailPage
+    },
+    {
+        path: '/room',
+        element: RoomPage
+    },
+    {
+        path: '/location',
+        element: LocationPage
     }
 ];
 

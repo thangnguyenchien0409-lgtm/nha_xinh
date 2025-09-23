@@ -17,7 +17,8 @@ type Item = {
 };
 
 function LeftHeader() {
-    const { isActiveNav, setIsActiveNav, handleNavigateHome } = useContext(ActiveContext)!;
+    const { isActiveNav, setIsActiveNav, handleNavigateHome, setRoom, setCurrentSubCate } =
+        useContext(ActiveContext)!;
 
     const { handleToggleSideBar } = useContext(ModalContext)!;
 
@@ -25,7 +26,18 @@ function LeftHeader() {
 
     const handleClickNavItem = (item: Item) => {
         setIsActiveNav(item.type);
+        setCurrentSubCate(null);
         navigate(item.path);
+    };
+
+    const handleClickSubNavItem = (i: any) => {
+        setRoom(i);
+        setIsActiveNav('rooms');
+        navigate(i.path);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     return (
@@ -55,7 +67,12 @@ function LeftHeader() {
                             />
                         )}
 
-                        {item.type === 'rooms' && <SubNav data={dataSubNav} />}
+                        {item.type === 'rooms' && (
+                            <SubNav
+                                data={dataSubNav}
+                                onClick={(i) => handleClickSubNavItem(i as Item)}
+                            />
+                        )}
                     </li>
                 ))}
             </ul>

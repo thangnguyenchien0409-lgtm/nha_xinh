@@ -5,21 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
 import { ModalContext } from '@/context/ModalContext';
 import { fetchGetAllCategory } from '@/redux/categorySlice/categorySlice';
-import { dataSideBar } from '@/components/SideBar/data';
+import { dataRoom, dataSideBar } from '@/components/SideBar/data';
 import { fetchGetAllSubCateGory } from '@/redux/subCategorySlice/subCategorySlice';
 import { fetchGetAllRoom } from '@/redux/roomSlice/roomSlice';
+import { useNavigate } from 'react-router-dom';
+import { ActiveContext } from '@/context/ActiveContext';
 
 function SideBar() {
     const [openCateId, setOpenCateId] = useState(null);
     const [openSubSideBar, setOpenSubSideBar] = useState(false);
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const category: any[] = useAppSelector((state) => state.category.category);
     const subCategory: any[] = useAppSelector((state) => state.subCategory.subCategory);
     const rooms: any[] = useAppSelector((state) => state.room.room);
 
     const { isOpenSideBar, handleToggleSideBar } = useContext(ModalContext)!;
+    const { setIsActiveNav, setCurrentSubCate, setRoom } = useContext(ActiveContext)!;
 
     useEffect(() => {
         dispatch(fetchGetAllCategory({ page: 1, limit: 1000 }));
@@ -33,6 +37,30 @@ function SideBar() {
 
     const handleToggleSubSideBar = () => {
         setOpenSubSideBar((prev) => !prev);
+    };
+
+    const handleClickSideBarItem = (item: any) => {
+        setCurrentSubCate(item);
+        navigate('/products-page');
+        handleToggleSideBar();
+        setIsActiveNav('products');
+    };
+
+    const handleClickNavItem = (item: any) => {
+        setIsActiveNav(item.type);
+        navigate(item.path);
+        handleToggleSideBar();
+    };
+
+    const handleClickSubRoomItem = (i: any) => {
+        setRoom(i);
+        setIsActiveNav('rooms');
+        navigate(i.path);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        handleToggleSideBar();
     };
 
     return (
@@ -94,6 +122,7 @@ function SideBar() {
                                             >
                                                 {subs.map((sub) => (
                                                     <div
+                                                        onClick={() => handleClickSideBarItem(sub)}
                                                         key={sub._id}
                                                         className='cursor-pointer py-[10px] text-[18px] text-[#0a0a0b] hover:text-black sm:text-[16px]'
                                                     >
@@ -122,7 +151,10 @@ function SideBar() {
                                             if (item.type === 'rooms') handleToggleSubSideBar();
                                         }}
                                     >
-                                        <div className='py-[6px] text-[20px] text-[#0A0A0B] sm:text-[18px]'>
+                                        <div
+                                            onClick={() => handleClickNavItem(item)}
+                                            className='py-[6px] text-[20px] text-[#0A0A0B] sm:text-[18px]'
+                                        >
                                             {item.name}
                                         </div>
                                         {item.type === 'rooms' && (
@@ -143,9 +175,10 @@ function SideBar() {
                                                 transition={{ duration: 0.3 }}
                                                 className='pb-[10px] pl-[30px]'
                                             >
-                                                {rooms.map((room) => (
+                                                {dataRoom.map((room) => (
                                                     <div
-                                                        key={room._id}
+                                                        onClick={() => handleClickSubRoomItem(room)}
+                                                        key={room.type}
                                                         className='cursor-pointer py-[10px] text-[18px] text-[#0a0a0b] hover:text-black sm:text-[16px]'
                                                     >
                                                         {room.name}
